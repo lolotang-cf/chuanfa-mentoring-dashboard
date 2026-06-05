@@ -13,8 +13,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .header-left .subtitle { font-size: 12px; opacity: 0.85; }
 .header-meta { font-size: 12px; opacity: 0.85; text-align: right; line-height: 1.6; white-space: nowrap; }
 .header-right { min-width: 280px; max-width: 350px; }
-.export-btn { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 3px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-left: 8px; transition: all .2s; }
+.export-dropdown { position: relative; display: inline-block; margin-left: 8px; }
+.export-btn { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 3px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; transition: all .2s; }
 .export-btn:hover { background: rgba(255,255,255,0.35); }
+.export-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 2px; background: white; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); min-width: 120px; z-index: 100; overflow: hidden; }
+.export-menu.show { display: block; }
+.export-menu a { display: block; padding: 8px 12px; font-size: 12px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f2f5; }
+.export-menu a:hover { background: #f0f2f5; color: #667eea; }
+.export-menu a:last-child { border-bottom: none; }
 
 /* 更新日志面板 - 显式设置深色文字避免继承header白色 */
 .update-log-panel { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 10px 14px; backdrop-filter: blur(4px); color: #333 !important; }
@@ -110,26 +116,37 @@ tr:hover td { background: #f8f9ff; }
 <div class="header">
     <div class="header-left">
         <h1>传发金融 · 新人带教管理看板</h1>
-        <div class="subtitle">数据100%来自4个源文档 · 自动追踪变化 · 每日两次更新 &nbsp;&nbsp;<button class="export-btn" onclick="downloadCSV()">📥 导出CSV</button></div>
+        <div class="subtitle">数据100%来自4个源文档 · 自动追踪变化 · 每日两次更新 &nbsp;&nbsp;
+            <div class="export-dropdown">
+                <button class="export-btn" onclick="toggleExportMenu()">📥 数据导出 ▼</button>
+                <div class="export-menu" id="exportMenu">
+                    <a href="javascript:void(0)" onclick="downloadCSV()">📄 导出 CSV</a>
+                    <a href="javascript:void(0)" onclick="downloadExcel()">📊 导出 Excel</a>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="header-meta">
-        当前数据时间: 2026-06-05 21:36<br>
-        快照基线: 2026-06-05 21:36<br>
+        当前数据时间: 2026-06-05 21:42<br>
+        快照基线: 2026-06-05 21:42<br>
         访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
     </div>
     <div class="header-right">
         <div class="update-log-panel">
-        <div class="update-log-title">📋 更新日志 <span class="update-log-count">共2次</span></div>
+        <div class="update-log-title">📋 更新日志 <span class="update-log-count">共3次</span></div>
         <div class="update-log-list">
             <div class="update-log-item" style="border-left: 3px solid #4cd137;background:#f0fdf4;">
-            <div class="update-log-time">🆕 2026-06-05 21:36</div>
+            <div class="update-log-time">🆕 2026-06-05 21:42</div>
+            <div class="update-log-summary">数据已同步，无新增变化</div>
+        </div><div class="update-log-item" style="border-left: 3px solid #e8ecf1;">
+            <div class="update-log-time">2026-06-05 21:36</div>
             <div class="update-log-summary">数据已同步，无新增变化</div>
         </div><div class="update-log-item" style="border-left: 3px solid #e8ecf1;">
             <div class="update-log-time">2026-06-05 21:15</div>
             <div class="update-log-summary">数据已同步，无新增变化</div>
         </div>
         </div>
-        <div class="update-log-footer">最近2条 · 最多保留20条</div>
+        <div class="update-log-footer">最近3条 · 最多保留20条</div>
     </div>
     </div>
 </div>
@@ -828,6 +845,17 @@ function switchTab(id) {
     event.target.classList.add('active');
 }
 
+// 导出菜单切换
+function toggleExportMenu() {
+    document.getElementById('exportMenu').classList.toggle('show');
+}
+// 点击外部关闭菜单
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.export-dropdown')) {
+        document.getElementById('exportMenu').classList.remove('show');
+    }
+});
+
 // 导出CSV功能
 function downloadCSV() {
     const csv = `序号,带教师傅,新员工姓名,所属部门,最早记录日期,W1跟教,W1对练,W1 F03,W2跟教,W2对练,W2 F03,W3跟教,W3对练,W3 F03,W4跟教,W4对练,W4 F03
@@ -845,10 +873,35 @@ function downloadCSV() {
     const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 21:36.csv';
+    link.download = '新人带教汇总_2026-06-05 21:42.csv';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    document.getElementById('exportMenu').classList.remove('show');
+}
+
+// 导出Excel功能（HTML表格伪装，Excel/WPS均可打开）
+function downloadExcel() {
+    const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><style>table{border-collapse:collapse;font-family:微软雅黑;font-size:12px;}th{background:#667eea;color:white;padding:8px;text-align:center;}td{padding:6px;border:1px solid #ddd;text-align:center;}tr:nth-child(even){background:#f8f9ff;}</style></head><body><table><tr><th>序号</th><th>带教师傅</th><th>新员工姓名</th><th>所属部门</th><th>最早记录日期</th><th>W1跟教</th><th>W1对练</th><th>W1 F03</th><th>W2跟教</th><th>W2对练</th><th>W2 F03</th><th>W3跟教</th><th>W3对练</th><th>W3 F03</th><th>W4跟教</th><th>W4对练</th><th>W4 F03</th></tr><tr><td>1</td><td>钟丽</td><td>武林涛</td><td>传发太原混合S2B</td><td>2026/05/29</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>2</td><td>秦文文</td><td>杨雯心</td><td>电销三组</td><td>2026/05/29</td><td>3</td><td>6</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>3</td><td>薛秉权</td><td>王明亮</td><td>传发太原单户S2B</td><td>2026/05/30</td><td>2</td><td>1</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>4</td><td>林伟民</td><td>宁家磊</td><td>小赢一手2A</td><td>2026/06/01</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>5</td><td>王义杰</td><td>米叶卉</td><td>传发太原防诉M1A</td><td>2026/06/03</td><td>2</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>6</td><td>曹泽州</td><td>冯冰涛</td><td>传发太原单户S2B</td><td>2026/06/03</td><td>3</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>7</td><td>谭炯</td><td>陈朝刚</td><td>小赢一手2C</td><td>2026/06/04</td><td>1</td><td>1</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>8</td><td>汤志华</td><td>汤小华</td><td>人才发展</td><td>2026/06/04</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>9</td><td>伍影舟</td><td>卢瑜</td><td>小赢一手2B</td><td>2026/06/05</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>10</td><td>武浩东</td><td>程锦华</td><td>传发太原混合S1A</td><td>2026/06/05</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>11</td><td>曹艳斌</td><td>房航宇</td><td>人才发展</td><td>无记录</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+</table></body></html>`;
+    const blob = new Blob(['﻿' + html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = '新人带教汇总_2026-06-05 21:42.xls';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    document.getElementById('exportMenu').classList.remove('show');
 }
 
 // 自动刷新提示（每30分钟）
