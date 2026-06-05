@@ -23,15 +23,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .export-menu a:last-child { border-bottom: none; }
 
 /* 更新日志面板 - 显式设置深色文字避免继承header白色 */
-.update-log-panel { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 10px 14px; backdrop-filter: blur(4px); color: #333 !important; }
-.update-log-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; color: #333 !important; }
+.update-log-panel { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 10px 14px; backdrop-filter: blur(4px); color: #333 !important; max-height: 320px; overflow-y: auto; }
+.update-log-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; color: #333 !important; padding-bottom: 4px; border-bottom: 1px solid #e8ecf1; }
 .update-log-count { font-size: 11px; background: #e8ecf1; color: #555; padding: 1px 6px; border-radius: 10px; }
-.update-log-list { max-height: 180px; overflow-y: auto; }
-.update-log-item { padding: 5px 8px; margin-bottom: 4px; border-radius: 4px; font-size: 11px; line-height: 1.4; color: #333 !important; }
-.update-log-time { font-weight: 600; margin-bottom: 2px; color: #1a1a1a !important; }
+.update-log-list { }
+.update-log-item { padding: 4px 8px; margin-bottom: 3px; border-radius: 4px; font-size: 10px; line-height: 1.4; color: #333 !important; }
+.update-log-time { font-weight: 600; margin-bottom: 1px; color: #1a1a1a !important; }
 .update-log-summary { color: #555 !important; word-break: break-all; }
-.update-log-footer { font-size: 10px; color: #999 !important; text-align: center; margin-top: 6px; }
+.update-log-footer { font-size: 10px; color: #999 !important; text-align: center; margin-top: 4px; }
 .update-log-empty { font-size: 12px; color: #999 !important; text-align: center; padding: 12px 0; }
+.log-details { margin-top: 4px; }
+.log-details summary { font-size: 10px; color: #667eea; cursor: pointer; padding: 2px 4px; user-select: none; }
+.log-details summary:hover { color: #764ba2; }
 
 .tabs { display: flex; background: white; border-bottom: 2px solid #e8ecf1; padding: 0 24px; gap: 4px; overflow-x: auto; }
 .tab-btn { padding: 14px 20px; border: none; background: none; cursor: pointer; font-size: 14px; color: #666; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .2s; white-space: nowrap; }
@@ -101,18 +104,6 @@ tr:hover td { background: #f8f9ff; }
 .detail-card h4 { font-size: 14px; color: #667eea; margin-bottom: 8px; }
 
 .footer-note { background: #fff8e1; border-left: 3px solid #f39c12; padding: 12px 16px; margin: 20px 0; font-size: 12px; color: #666; border-radius: 0 6px 6px 0; }
-
-/* 版本更新日志 */
-.version-log-section { background: white; border-radius: 10px; padding: 20px 24px; margin: 20px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-.version-log-section h3 { font-size: 16px; color: #667eea; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8ecf1; }
-.version-log-timeline { border-left: 3px solid #e8ecf1; padding-left: 20px; margin-left: 8px; }
-.version-item { margin-bottom: 14px; position: relative; }
-.version-item::before { content: ''; position: absolute; left: -26px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: #667eea; border: 2px solid white; box-shadow: 0 0 0 2px #667eea; }
-.version-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-.version-tag { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
-.version-date { font-size: 11px; color: #999; }
-.version-changes { margin: 0; padding-left: 18px; font-size: 12px; color: #555; line-height: 1.7; }
-.version-changes li { margin-bottom: 2px; }
 .verify-row td { background: #f0fdf4 !important; font-weight: 600; font-size: 12px; }
 
 @media print {
@@ -139,29 +130,56 @@ tr:hover td { background: #f8f9ff; }
         </div>
     </div>
     <div class="header-meta">
-        当前数据时间: 2026-06-05 21:46<br>
-        快照基线: 2026-06-05 21:46<br>
+        当前数据时间: 2026-06-05 22:08<br>
+        快照基线: 2026-06-05 22:08<br>
         访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
     </div>
     <div class="header-right">
         <div class="update-log-panel">
-        <div class="update-log-title">📋 更新日志 <span class="update-log-count">共4次</span></div>
-        <div class="update-log-list">
-            <div class="update-log-item" style="border-left: 3px solid #4cd137;background:#f0fdf4;">
-            <div class="update-log-time">🆕 2026-06-05 21:46</div>
-            <div class="update-log-summary">数据已同步，无新增变化</div>
-        </div><div class="update-log-item" style="border-left: 3px solid #e8ecf1;">
-            <div class="update-log-time">2026-06-05 21:42</div>
-            <div class="update-log-summary">数据已同步，无新增变化</div>
-        </div><div class="update-log-item" style="border-left: 3px solid #e8ecf1;">
-            <div class="update-log-time">2026-06-05 21:36</div>
-            <div class="update-log-summary">数据已同步，无新增变化</div>
-        </div><div class="update-log-item" style="border-left: 3px solid #e8ecf1;">
-            <div class="update-log-time">2026-06-05 21:15</div>
+        <div class="update-log-title">📋 更新日志</div>
+        <div class="update-log-item" style="border-left:3px solid #4cd137;background:#f0fdf4;">
+            <div class="update-log-time">🆕 数据更新 · 2026-06-05 22:08</div>
             <div class="update-log-summary">数据已同步，无新增变化</div>
         </div>
+        <div class="update-log-item" style="border-left:3px solid #667eea;background:#f4f6ff;">
+            <div class="update-log-time">📦 版本更新 · V6.2 (2026-06-05)</div>
+            <div class="update-log-summary">• 修复更新日志面板文字颜色（白色→深色，提升可读性）<br>• 新增数据导出下拉按钮，支持 CSV 和 Excel 双格式导出</div>
         </div>
-        <div class="update-log-footer">最近4条 · 最多保留20条</div>
+        <details class="log-details">
+            <summary>📋 历史数据更新（共4次）</summary>
+            <div class="update-log-list" style="max-height:200px;overflow-y:auto;"><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 21:46</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 21:42</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 21:36</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 21:15</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div></div>
+        </details>
+        <details class="log-details">
+            <summary>🔄 历史版本更新（共5个版本）</summary>
+            <div class="update-log-list" style="max-height:200px;overflow-y:auto;"><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">📦 V6.1 (2026-06-05)</div>
+                <div class="update-log-summary">• 新增右上角数据更新日志栏，持久化到 update_log.json<br>• 每次更新追加一条记录，显示变化摘要（新增员工/师徒变更/新增记录数）<br>• HTML头部右侧显示最近5条更新，最新一条绿色高亮</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">📦 V6.0 (2026-06-05)</div>
+                <div class="update-log-summary">• 新增数据变化追踪：引入 snapshot.json 快照机制<br>• 新增员工/师徒变更/新增记录自动高亮（黄色背景+NEW徽章+脉冲动画）<br>• 批次统计汇总改为 SVG 弧线仪表盘图表（6个仪表盘+5条进度条）<br>• 部署至 GitHub Pages 固定URL，每天 00:00/15:00 自动更新</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">📦 V5.0 (2026-06-05)</div>
+                <div class="update-log-summary">• 看板改为三TAB格式：全量新人带教总览/带教动作周度明细/批次统计汇总<br>• 浅色专业配色方案（#f0f2f5背景、白色卡片、紫色渐变顶栏）<br>• 所有数据 100% 来自4个源文档，零硬编码</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">📦 V4.0 (2026-06-05)</div>
+                <div class="update-log-summary">• 从4个源智能表格动态读取员工名单（不再硬编码）<br>• 修复时区BUG（企微时间戳+8h转换）<br>• 修复分页漏数据问题（limit=200）<br>• 交叉验证机制：带教表=跟教+对练 总量校验</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">📦 V3.0 (2026-06-05)</div>
+                <div class="update-log-summary">• 首次从4个源文档读取数据生成看板<br>• 按员工+周次维度汇总跟教次数/话术对练/F03提交<br>• 周次计算：W1(Day1-7)/W2(Day8-14)/W3(Day15-21)/W4(Day22-30)</div>
+            </div></div>
+        </details>
     </div>
     </div>
 </div>
@@ -850,47 +868,6 @@ tr:hover td { background: #f8f9ff; }
     <strong>⚠️ 数据声明：</strong>本看板所有数据100%来自4个源文档（带教过程评估表、话术演练记录表、录音拆解学习心得、话术评分卡），通过企微智能表格API实时读取。新增数据用 <span style="background:#ffeb3b;padding:1px 4px;border-radius:2px;">高亮</span> 标注。快照对比机制追踪每次更新变化。右上角更新日志持久化保存，员工可随时查看历史更新内容。
 </div>
 
-<div class="version-log-section">
-        <h3>🔄 版本更新记录</h3>
-        <div class="version-log-timeline"><div class="version-item">
-            <div class="version-header">
-                <span class="version-tag">V6.2</span>
-                <span class="version-date">2026-06-05</span>
-            </div>
-            <ul class="version-changes"><li>修复更新日志面板文字颜色（白色→深色，提升可读性）</li><li>新增数据导出下拉按钮，支持 CSV 和 Excel 双格式导出</li></ul>
-        </div><div class="version-item">
-            <div class="version-header">
-                <span class="version-tag">V6.1</span>
-                <span class="version-date">2026-06-05</span>
-            </div>
-            <ul class="version-changes"><li>新增右上角数据更新日志栏，持久化到 update_log.json</li><li>每次更新追加一条记录，显示变化摘要（新增员工/师徒变更/新增记录数）</li><li>HTML头部右侧显示最近5条更新，最新一条绿色高亮</li></ul>
-        </div><div class="version-item">
-            <div class="version-header">
-                <span class="version-tag">V6.0</span>
-                <span class="version-date">2026-06-05</span>
-            </div>
-            <ul class="version-changes"><li>新增数据变化追踪：引入 snapshot.json 快照机制</li><li>新增员工/师徒变更/新增记录自动高亮（黄色背景+NEW徽章+脉冲动画）</li><li>批次统计汇总改为 SVG 弧线仪表盘图表（6个仪表盘+5条进度条）</li><li>部署至 GitHub Pages 固定URL，每天 00:00/15:00 自动更新</li></ul>
-        </div><div class="version-item">
-            <div class="version-header">
-                <span class="version-tag">V5.0</span>
-                <span class="version-date">2026-06-05</span>
-            </div>
-            <ul class="version-changes"><li>看板改为三TAB格式：全量新人带教总览/带教动作周度明细/批次统计汇总</li><li>浅色专业配色方案（#f0f2f5背景、白色卡片、紫色渐变顶栏）</li><li>所有数据 100% 来自4个源文档，零硬编码</li></ul>
-        </div><div class="version-item">
-            <div class="version-header">
-                <span class="version-tag">V4.0</span>
-                <span class="version-date">2026-06-05</span>
-            </div>
-            <ul class="version-changes"><li>从4个源智能表格动态读取员工名单（不再硬编码）</li><li>修复时区BUG（企微时间戳+8h转换）</li><li>修复分页漏数据问题（limit=200）</li><li>交叉验证机制：带教表=跟教+对练 总量校验</li></ul>
-        </div><div class="version-item">
-            <div class="version-header">
-                <span class="version-tag">V3.0</span>
-                <span class="version-date">2026-06-05</span>
-            </div>
-            <ul class="version-changes"><li>首次从4个源文档读取数据生成看板</li><li>按员工+周次维度汇总跟教次数/话术对练/F03提交</li><li>周次计算：W1(Day1-7)/W2(Day8-14)/W3(Day15-21)/W4(Day22-30)</li></ul>
-        </div></div>
-    </div>
-
 </div>
 
 <script>
@@ -929,7 +906,7 @@ function downloadCSV() {
     const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 21:46.csv';
+    link.download = '新人带教汇总_2026-06-05 22:08.csv';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -953,7 +930,7 @@ function downloadExcel() {
     const blob = new Blob(['﻿' + html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 21:46.xls';
+    link.download = '新人带教汇总_2026-06-05 22:08.xls';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
