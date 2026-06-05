@@ -36,6 +36,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .log-details summary { font-size: 10px; color: #667eea; cursor: pointer; padding: 2px 4px; user-select: none; }
 .log-details summary:hover { color: #764ba2; }
 
+/* 筛选下拉 */
+.filter-bar { display: flex; gap: 12px; padding: 12px 24px; background: white; border-bottom: 1px solid #e8ecf1; align-items: center; flex-wrap: wrap; }
+.filter-bar label { font-size: 12px; color: #888; white-space: nowrap; }
+.filter-bar select { padding: 4px 8px; border: 1px solid #d0d5dd; border-radius: 4px; font-size: 12px; color: #333; background: white; min-width: 100px; cursor: pointer; }
+.filter-bar select:focus { border-color: #667eea; outline: none; }
+.filter-reset { font-size: 11px; color: #667eea; cursor: pointer; border: none; background: none; text-decoration: underline; }
+
 .tabs { display: flex; background: white; border-bottom: 2px solid #e8ecf1; padding: 0 24px; gap: 4px; overflow-x: auto; }
 .tab-btn { padding: 14px 20px; border: none; background: none; cursor: pointer; font-size: 14px; color: #666; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .2s; white-space: nowrap; }
 .tab-btn:hover { color: #667eea; }
@@ -130,15 +137,15 @@ tr:hover td { background: #f8f9ff; }
         </div>
     </div>
     <div class="header-meta">
-        当前数据时间: 2026-06-05 22:08<br>
-        快照基线: 2026-06-05 22:08<br>
+        当前数据时间: 2026-06-05 22:22<br>
+        快照基线: 2026-06-05 22:22<br>
         访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
     </div>
     <div class="header-right">
         <div class="update-log-panel">
         <div class="update-log-title">📋 更新日志</div>
         <div class="update-log-item" style="border-left:3px solid #4cd137;background:#f0fdf4;">
-            <div class="update-log-time">🆕 数据更新 · 2026-06-05 22:08</div>
+            <div class="update-log-time">🆕 数据更新 · 2026-06-05 22:22</div>
             <div class="update-log-summary">数据已同步，无新增变化</div>
         </div>
         <div class="update-log-item" style="border-left:3px solid #667eea;background:#f4f6ff;">
@@ -146,8 +153,11 @@ tr:hover td { background: #f8f9ff; }
             <div class="update-log-summary">• 修复更新日志面板文字颜色（白色→深色，提升可读性）<br>• 新增数据导出下拉按钮，支持 CSV 和 Excel 双格式导出</div>
         </div>
         <details class="log-details">
-            <summary>📋 历史数据更新（共4次）</summary>
+            <summary>📋 历史数据更新（共5次）</summary>
             <div class="update-log-list" style="max-height:200px;overflow-y:auto;"><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 22:08</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
                 <div class="update-log-time">2026-06-05 21:46</div>
                 <div class="update-log-summary">数据已同步，无新增变化</div>
             </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
@@ -208,11 +218,17 @@ tr:hover td { background: #f8f9ff; }
 
 <!-- TAB1: 全量新人带教总览 -->
 <div id="tab1" class="tab-panel active">
-    <div class="summary-section">
-        <h3>全量新人带教总览（数据100%来自4个源文档）</h3>
+    <div class="filter-bar">
+        <label>师傅筛选:</label>
+        <select id="filter1-teacher" onchange="applyFilter1()"><option value="">全部</option><option value="伍影舟">伍影舟</option><option value="曹泽州">曹泽州</option><option value="曹艳斌">曹艳斌</option><option value="林伟民">林伟民</option><option value="武浩东">武浩东</option><option value="汤志华">汤志华</option><option value="王义杰">王义杰</option><option value="秦文文">秦文文</option><option value="薛秉权">薛秉权</option><option value="谭炯">谭炯</option><option value="钟丽">钟丽</option></select>
+        <label>姓名筛选:</label>
+        <select id="filter1-name" onchange="applyFilter1()"><option value="">全部</option><option value="冯冰涛">冯冰涛</option><option value="卢瑜">卢瑜</option><option value="宁家磊">宁家磊</option><option value="房航宇">房航宇</option><option value="杨雯心">杨雯心</option><option value="武林涛">武林涛</option><option value="汤小华">汤小华</option><option value="王明亮">王明亮</option><option value="程锦华">程锦华</option><option value="米叶卉">米叶卉</option><option value="陈朝刚">陈朝刚</option></select>
+        <label>部门筛选:</label>
+        <select id="filter1-dept" onchange="applyFilter1()"><option value="">全部</option><option value="人才发展">人才发展</option><option value="传发太原单户S2B">传发太原单户S2B</option><option value="传发太原混合S1A">传发太原混合S1A</option><option value="传发太原混合S2B">传发太原混合S2B</option><option value="传发太原防诉M1A">传发太原防诉M1A</option><option value="小赢一手2A">小赢一手2A</option><option value="小赢一手2B">小赢一手2B</option><option value="小赢一手2C">小赢一手2C</option><option value="电销三组">电销三组</option></select>
+        <button class="filter-reset" onclick="resetFilter1()">✕ 重置</button>
     </div>
     <div class="table-wrap">
-        <table>
+        <table id="table1">
             <thead>
                 <tr>
                     <th rowspan="2">序号</th>
@@ -233,7 +249,7 @@ tr:hover td { background: #f8f9ff; }
                 </tr>
             </thead>
             <tbody>
-                <tr class="">
+                <tr class="" data-teacher="钟丽" data-name="武林涛" data-dept="传发太原混合S2B">
     <td>1</td>
     <td>钟丽</td>
     <td><strong>武林涛</strong></td>
@@ -252,7 +268,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="秦文文" data-name="杨雯心" data-dept="电销三组">
     <td>2</td>
     <td>秦文文</td>
     <td><strong>杨雯心</strong></td>
@@ -271,7 +287,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="薛秉权" data-name="王明亮" data-dept="传发太原单户S2B">
     <td>3</td>
     <td>薛秉权</td>
     <td><strong>王明亮</strong></td>
@@ -290,7 +306,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="林伟民" data-name="宁家磊" data-dept="小赢一手2A">
     <td>4</td>
     <td>林伟民</td>
     <td><strong>宁家磊</strong></td>
@@ -309,7 +325,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="王义杰" data-name="米叶卉" data-dept="传发太原防诉M1A">
     <td>5</td>
     <td>王义杰</td>
     <td><strong>米叶卉</strong></td>
@@ -328,7 +344,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="曹泽州" data-name="冯冰涛" data-dept="传发太原单户S2B">
     <td>6</td>
     <td>曹泽州</td>
     <td><strong>冯冰涛</strong></td>
@@ -347,7 +363,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="谭炯" data-name="陈朝刚" data-dept="小赢一手2C">
     <td>7</td>
     <td>谭炯</td>
     <td><strong>陈朝刚</strong></td>
@@ -366,7 +382,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="汤志华" data-name="汤小华" data-dept="人才发展">
     <td>8</td>
     <td>汤志华</td>
     <td><strong>汤小华</strong></td>
@@ -385,7 +401,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="伍影舟" data-name="卢瑜" data-dept="小赢一手2B">
     <td>9</td>
     <td>伍影舟</td>
     <td><strong>卢瑜</strong></td>
@@ -404,7 +420,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="武浩东" data-name="程锦华" data-dept="传发太原混合S1A">
     <td>10</td>
     <td>武浩东</td>
     <td><strong>程锦华</strong></td>
@@ -423,7 +439,7 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="曹艳斌" data-name="房航宇" data-dept="人才发展">
     <td>11</td>
     <td>曹艳斌</td>
     <td><strong>房航宇</strong></td>
@@ -450,11 +466,15 @@ tr:hover td { background: #f8f9ff; }
 
 <!-- TAB2: 带教动作周度明细 -->
 <div id="tab2" class="tab-panel">
-    <div class="summary-section">
-        <h3>带教动作周度明细（✓=达标 ✗=未达标）</h3>
+    <div class="filter-bar">
+        <label>师傅筛选:</label>
+        <select id="filter2-teacher" onchange="applyFilter2()"><option value="">全部</option><option value="伍影舟">伍影舟</option><option value="曹泽州">曹泽州</option><option value="曹艳斌">曹艳斌</option><option value="林伟民">林伟民</option><option value="武浩东">武浩东</option><option value="汤志华">汤志华</option><option value="王义杰">王义杰</option><option value="秦文文">秦文文</option><option value="薛秉权">薛秉权</option><option value="谭炯">谭炯</option><option value="钟丽">钟丽</option></select>
+        <label>部门筛选:</label>
+        <select id="filter2-dept" onchange="applyFilter2()"><option value="">全部</option><option value="人才发展">人才发展</option><option value="传发太原单户S2B">传发太原单户S2B</option><option value="传发太原混合S1A">传发太原混合S1A</option><option value="传发太原混合S2B">传发太原混合S2B</option><option value="传发太原防诉M1A">传发太原防诉M1A</option><option value="小赢一手2A">小赢一手2A</option><option value="小赢一手2B">小赢一手2B</option><option value="小赢一手2C">小赢一手2C</option><option value="电销三组">电销三组</option></select>
+        <button class="filter-reset" onclick="resetFilter2()">✕ 重置</button>
     </div>
     <div class="table-wrap">
-        <table>
+        <table id="table2">
             <thead>
                 <tr>
                     <th>新员工</th><th>师傅</th><th>部门</th>
@@ -472,7 +492,7 @@ tr:hover td { background: #f8f9ff; }
                 </tr>
             </thead>
             <tbody>
-                <tr class="">
+                <tr class="" data-teacher="钟丽" data-dept="传发太原混合S2B">
     <td><strong>武林涛</strong></td>
     <td>钟丽</td>
     <td>传发太原混合S2B</td>
@@ -497,7 +517,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="秦文文" data-dept="电销三组">
     <td><strong>杨雯心</strong></td>
     <td>秦文文</td>
     <td>电销三组</td>
@@ -522,7 +542,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="薛秉权" data-dept="传发太原单户S2B">
     <td><strong>王明亮</strong></td>
     <td>薛秉权</td>
     <td>传发太原单户S2B</td>
@@ -547,7 +567,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="林伟民" data-dept="小赢一手2A">
     <td><strong>宁家磊</strong></td>
     <td>林伟民</td>
     <td>小赢一手2A</td>
@@ -572,7 +592,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="王义杰" data-dept="传发太原防诉M1A">
     <td><strong>米叶卉</strong></td>
     <td>王义杰</td>
     <td>传发太原防诉M1A</td>
@@ -597,7 +617,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="曹泽州" data-dept="传发太原单户S2B">
     <td><strong>冯冰涛</strong></td>
     <td>曹泽州</td>
     <td>传发太原单户S2B</td>
@@ -622,7 +642,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="谭炯" data-dept="小赢一手2C">
     <td><strong>陈朝刚</strong></td>
     <td>谭炯</td>
     <td>小赢一手2C</td>
@@ -647,7 +667,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="汤志华" data-dept="人才发展">
     <td><strong>汤小华</strong></td>
     <td>汤志华</td>
     <td>人才发展</td>
@@ -672,7 +692,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="伍影舟" data-dept="小赢一手2B">
     <td><strong>卢瑜</strong></td>
     <td>伍影舟</td>
     <td>小赢一手2B</td>
@@ -697,7 +717,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="武浩东" data-dept="传发太原混合S1A">
     <td><strong>程锦华</strong></td>
     <td>武浩东</td>
     <td>传发太原混合S1A</td>
@@ -722,7 +742,7 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="">
+<tr class="" data-teacher="曹艳斌" data-dept="人才发展">
     <td><strong>房航宇</strong></td>
     <td>曹艳斌</td>
     <td>人才发展</td>
@@ -878,6 +898,41 @@ function switchTab(id) {
     event.target.classList.add('active');
 }
 
+// ===== TAB1 筛选功能（师傅/姓名/部门）=====
+function applyFilter1() {
+    const t = document.getElementById('filter1-teacher').value;
+    const n = document.getElementById('filter1-name').value;
+    const d = document.getElementById('filter1-dept').value;
+    document.querySelectorAll('#table1 tbody tr').forEach(tr => {
+        const show = (t === '' || tr.dataset.teacher === t) &&
+                     (n === '' || tr.dataset.name === n) &&
+                     (d === '' || tr.dataset.dept === d);
+        tr.style.display = show ? '' : 'none';
+    });
+}
+function resetFilter1() {
+    document.getElementById('filter1-teacher').value = '';
+    document.getElementById('filter1-name').value = '';
+    document.getElementById('filter1-dept').value = '';
+    applyFilter1();
+}
+
+// ===== TAB2 筛选功能（师傅/部门）=====
+function applyFilter2() {
+    const t = document.getElementById('filter2-teacher').value;
+    const d = document.getElementById('filter2-dept').value;
+    document.querySelectorAll('#table2 tbody tr').forEach(tr => {
+        const show = (t === '' || tr.dataset.teacher === t) &&
+                     (d === '' || tr.dataset.dept === d);
+        tr.style.display = show ? '' : 'none';
+    });
+}
+function resetFilter2() {
+    document.getElementById('filter2-teacher').value = '';
+    document.getElementById('filter2-dept').value = '';
+    applyFilter2();
+}
+
 // 导出菜单切换
 function toggleExportMenu() {
     document.getElementById('exportMenu').classList.toggle('show');
@@ -906,7 +961,7 @@ function downloadCSV() {
     const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 22:08.csv';
+    link.download = '新人带教汇总_2026-06-05 22:22.csv';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -930,7 +985,7 @@ function downloadExcel() {
     const blob = new Blob(['﻿' + html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 22:08.xls';
+    link.download = '新人带教汇总_2026-06-05 22:22.xls';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
