@@ -415,15 +415,15 @@ tr:hover td { background: var(--bg-hover); }
         </div>
     </div>
     <div class="header-meta">
-        当前数据时间: 2026-06-05 23:09<br>
-        快照基线: 2026-06-05 23:09<br>
+        当前数据时间: 2026-06-05 23:16<br>
+        快照基线: 2026-06-05 23:16<br>
         访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
     </div>
     <div class="header-right">
         <div class="update-log-panel">
         <div class="update-log-title">📋 更新日志</div>
         <div class="update-log-item" style="border-left:3px solid #4cd137;background:#f0fdf4;">
-            <div class="update-log-time">🆕 数据更新 · 2026-06-05 23:09</div>
+            <div class="update-log-time">🆕 数据更新 · 2026-06-05 23:16</div>
             <div class="update-log-summary">数据已同步，无新增变化</div>
         </div>
         <div class="update-log-item" style="border-left:3px solid #E85A2A;background:#fdf6f2;">
@@ -431,8 +431,11 @@ tr:hover td { background: var(--bg-hover); }
             <div class="update-log-summary">• 顶栏改为橙色渐变(#E85A2A→#D04A1A→#F08030) + 弧形波浪底部<br>• 传发金融品牌色 #E85A2A 作为TAB激活态/KPI/NEW徽章主色<br>• 新增高亮改为橙色系(#fff8f0)，与品牌色统一</div>
         </div>
         <details class="log-details">
-            <summary>📋 历史数据更新（共12次）</summary>
+            <summary>📋 历史数据更新（共13次）</summary>
             <div class="update-log-list" style="max-height:200px;overflow-y:auto;"><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 23:09</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
                 <div class="update-log-time">2026-06-05 23:08</div>
                 <div class="update-log-summary">数据已同步，无新增变化</div>
             </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
@@ -1187,7 +1190,7 @@ tr:hover td { background: var(--bg-hover); }
 </div>
 
 <div class="footer-note">
-    <strong>⚠️ 数据声明：</strong>本看板所有数据100%来自4个源文档（带教过程评估表、话术演练记录表、录音拆解学习心得、话术评分卡），通过企微智能表格API实时读取。新增数据用 <span style="background:#ffeb3b;padding:1px 4px;border-radius:2px;">高亮</span> 标注。快照对比机制追踪每次更新变化。右上角更新日志持久化保存，员工可随时查看历史更新内容。
+    <strong>⚠️ 数据声明：</strong>本看板所有数据100%来自4个源文档（带教过程评估表、话术演练记录表、录音拆解学习心得、话术评分卡），实时读取。新增数据用 <span style="background:#ffeb3b;padding:1px 4px;border-radius:2px;">高亮</span> 标注。快照对比机制追踪每次更新变化。右上角更新日志持久化保存，员工可随时查看历史更新内容。
 </div>
 
 </div>
@@ -1263,7 +1266,7 @@ function downloadCSV() {
     const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 23:09.csv';
+    link.download = '新人带教汇总_2026-06-05 23:16.csv';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1287,7 +1290,7 @@ function downloadExcel() {
     const blob = new Blob(['﻿' + html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 23:09.xls';
+    link.download = '新人带教汇总_2026-06-05 23:16.xls';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
