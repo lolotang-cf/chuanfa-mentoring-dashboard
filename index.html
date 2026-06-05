@@ -349,9 +349,11 @@ tr:hover td { background: var(--bg-hover); }
 }
 
 /* ===== 仪表盘 ===== */
-.gauge-grid { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; padding: 16px 0; }
-.gauge-container { text-align: center; }
+.gauge-grid { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: center; padding: 16px 0; }
+.gauge-container { text-align: center; min-width: 130px; }
 .gauge-container svg { filter: drop-shadow(0 1px 3px rgba(0,0,0,0.05)); }
+
+/* 仪表盘弧线生长动画 — 每个仪表盘通过独立的CSS @keyframes + CSS变量驱动 */
 
 /* ===== 进度条 ===== */
 .progress-section {
@@ -415,24 +417,51 @@ tr:hover td { background: var(--bg-hover); }
         </div>
     </div>
     <div class="header-meta">
-        当前数据时间: 2026-06-05 23:16<br>
-        快照基线: 2026-06-05 23:16<br>
+        当前数据时间: 2026-06-06 00:05<br>
+        快照基线: 2026-06-06 00:05<br>
         访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
     </div>
     <div class="header-right">
         <div class="update-log-panel">
         <div class="update-log-title">📋 更新日志</div>
         <div class="update-log-item" style="border-left:3px solid #4cd137;background:#f0fdf4;">
-            <div class="update-log-time">🆕 数据更新 · 2026-06-05 23:16</div>
+            <div class="update-log-time">🆕 数据更新 · 2026-06-06 00:05</div>
             <div class="update-log-summary">数据已同步，无新增变化</div>
         </div>
         <div class="update-log-item" style="border-left:3px solid #E85A2A;background:#fdf6f2;">
-            <div class="update-log-time">📦 版本更新 · V6.6 (2026-06-05)</div>
-            <div class="update-log-summary">• 顶栏改为橙色渐变(#E85A2A→#D04A1A→#F08030) + 弧形波浪底部<br>• 传发金融品牌色 #E85A2A 作为TAB激活态/KPI/NEW徽章主色<br>• 新增高亮改为橙色系(#fff8f0)，与品牌色统一</div>
+            <div class="update-log-time">📦 版本更新 · V6.7 (2026-06-05)</div>
+            <div class="update-log-summary">• 仪表盘弧线生长动画：CSS @keyframes + CSS变量驱动，从底部向上动态生长<br>• 动画时长延长至2.5秒，0.2秒延迟，ease-out缓动<br>• 每个仪表盘独立动画名称，消除冲突<br>• 数字弹入动画(0.8s) + 呼吸发光效果(3s后启动)</div>
         </div>
         <details class="log-details">
-            <summary>📋 历史数据更新（共13次）</summary>
+            <summary>📋 历史数据更新（共19次）</summary>
             <div class="update-log-list" style="max-height:200px;overflow-y:auto;"><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-06 00:04</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-06 00:04</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-06 00:00</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 23:58</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 23:54</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 23:53</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 23:51</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 23:47</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 23:16</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
                 <div class="update-log-time">2026-06-05 23:09</div>
                 <div class="update-log-summary">数据已同步，无新增变化</div>
             </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
@@ -461,15 +490,6 @@ tr:hover td { background: var(--bg-hover); }
                 <div class="update-log-summary">数据已同步，无新增变化</div>
             </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
                 <div class="update-log-time">2026-06-05 21:46</div>
-                <div class="update-log-summary">数据已同步，无新增变化</div>
-            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
-                <div class="update-log-time">2026-06-05 21:42</div>
-                <div class="update-log-summary">数据已同步，无新增变化</div>
-            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
-                <div class="update-log-time">2026-06-05 21:36</div>
-                <div class="update-log-summary">数据已同步，无新增变化</div>
-            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
-                <div class="update-log-time">2026-06-05 21:15</div>
                 <div class="update-log-summary">数据已同步，无新增变化</div>
             </div></div>
         </details>
@@ -1099,52 +1119,226 @@ tr:hover td { background: var(--bg-hover); }
         <h4>📈 各周带教达标率仪表盘</h4>
         <div class="gauge-grid">
             <div class="gauge-container">
-    <svg viewBox="0 0 180 180" width="180" height="180">
+    <svg viewBox="0 0 180 215" width="180" height="215">
+        <defs>
+            <linearGradient id="gauge-anim-整体活跃率-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#0d9488;stop-opacity:0.85" />
+                <stop offset="100%" style="stop-color:#0d9488;stop-opacity:1" />
+            </linearGradient>
+            <style>
+                @keyframes countUp_整体活跃率 {
+                    0% { opacity: 0; transform: translateY(8px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes arcGrow_整体活跃率 {
+                    0% { stroke-dashoffset: var(--arc-len); }
+                    100% { stroke-dashoffset: var(--final-offset); }
+                }
+                @keyframes pulseGlow_整体活跃率 {
+                    0%, 100% { filter: drop-shadow(0 0 2px #0d948844); }
+                    50% { filter: drop-shadow(0 0 8px #0d948888); }
+                }
+                .g-val-整体活跃率 { animation: countUp_整体活跃率 0.8s ease-out 0.3s both; }
+                .g-glow-整体活跃率 { animation: pulseGlow_整体活跃率 2.5s ease-in-out 3s infinite; }
+                .g-arc-整体活跃率 {
+                    stroke-dashoffset: var(--arc-len);
+                    animation: arcGrow_整体活跃率 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+                }
+            </style>
+        </defs>
+        <!-- 背景弧 -->
         <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 112.0 41.0" fill="none" stroke="#0d9488" stroke-width="14.4" stroke-linecap="round"/>
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#0d9488">10</text>
-        <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
-        <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">整体活跃率</text>
+        <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 112.0 41.0" 
+              fill="none" stroke="url(#gauge-anim-整体活跃率-grad)" stroke-width="14.4" stroke-linecap="round"
+              class="g-arc-整体活跃率 g-glow-整体活跃率"
+              style="stroke-dasharray: 296.9; --arc-len: 296.9; --final-offset: 27.0;"/>
+        <text class="g-val-整体活跃率" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#0d9488">10</text>
+        <text class="g-val-整体活跃率" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">整体活跃率</text>
     </svg>
 </div><div class="gauge-container">
-    <svg viewBox="0 0 180 180" width="180" height="180">
+    <svg viewBox="0 0 180 215" width="180" height="215">
+        <defs>
+            <linearGradient id="gauge-anim-W1跟教达标6-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.85" />
+                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+            </linearGradient>
+            <style>
+                @keyframes countUp_W1跟教达标6 {
+                    0% { opacity: 0; transform: translateY(8px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes arcGrow_W1跟教达标6 {
+                    0% { stroke-dashoffset: var(--arc-len); }
+                    100% { stroke-dashoffset: var(--final-offset); }
+                }
+                @keyframes pulseGlow_W1跟教达标6 {
+                    0%, 100% { filter: drop-shadow(0 0 2px #dc262644); }
+                    50% { filter: drop-shadow(0 0 8px #dc262688); }
+                }
+                .g-val-W1跟教达标6 { animation: countUp_W1跟教达标6 0.8s ease-out 0.3s both; }
+                .g-glow-W1跟教达标6 { animation: pulseGlow_W1跟教达标6 2.5s ease-in-out 3s infinite; }
+                .g-arc-W1跟教达标6 {
+                    stroke-dashoffset: var(--arc-len);
+                    animation: arcGrow_W1跟教达标6 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+                }
+            </style>
+        </defs>
+        <!-- 背景弧 -->
         <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
+        <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
         
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">0</text>
-        <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
-        <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W1跟教达标(≥6)</text>
+        <text class="g-val-W1跟教达标6" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">0</text>
+        <text class="g-val-W1跟教达标6" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W1达标(≥6)</text>
     </svg>
 </div><div class="gauge-container">
-    <svg viewBox="0 0 180 180" width="180" height="180">
+    <svg viewBox="0 0 180 215" width="180" height="215">
+        <defs>
+            <linearGradient id="gauge-anim-W1对练达标3-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.85" />
+                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+            </linearGradient>
+            <style>
+                @keyframes countUp_W1对练达标3 {
+                    0% { opacity: 0; transform: translateY(8px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes arcGrow_W1对练达标3 {
+                    0% { stroke-dashoffset: var(--arc-len); }
+                    100% { stroke-dashoffset: var(--final-offset); }
+                }
+                @keyframes pulseGlow_W1对练达标3 {
+                    0%, 100% { filter: drop-shadow(0 0 2px #dc262644); }
+                    50% { filter: drop-shadow(0 0 8px #dc262688); }
+                }
+                .g-val-W1对练达标3 { animation: countUp_W1对练达标3 0.8s ease-out 0.3s both; }
+                .g-glow-W1对练达标3 { animation: pulseGlow_W1对练达标3 2.5s ease-in-out 3s infinite; }
+                .g-arc-W1对练达标3 {
+                    stroke-dashoffset: var(--arc-len);
+                    animation: arcGrow_W1对练达标3 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+                }
+            </style>
+        </defs>
+        <!-- 背景弧 -->
         <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
-        <path d="M 134.5 144.5 A 63.0 63.0 0 0 1 112.0 159.0" fill="none" stroke="#dc2626" stroke-width="14.4" stroke-linecap="round"/>
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">1</text>
-        <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
-        <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W1对练达标(≥3)</text>
+        <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
+        <path d="M 134.5 144.5 A 63.0 63.0 0 0 1 112.0 159.0" 
+              fill="none" stroke="url(#gauge-anim-W1对练达标3-grad)" stroke-width="14.4" stroke-linecap="round"
+              class="g-arc-W1对练达标3 g-glow-W1对练达标3"
+              style="stroke-dasharray: 296.9; --arc-len: 296.9; --final-offset: 269.9;"/>
+        <text class="g-val-W1对练达标3" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">1</text>
+        <text class="g-val-W1对练达标3" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W1对练达标(≥3)</text>
     </svg>
 </div><div class="gauge-container">
-    <svg viewBox="0 0 180 180" width="180" height="180">
+    <svg viewBox="0 0 180 215" width="180" height="215">
+        <defs>
+            <linearGradient id="gauge-anim-W2跟教达标2-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.85" />
+                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+            </linearGradient>
+            <style>
+                @keyframes countUp_W2跟教达标2 {
+                    0% { opacity: 0; transform: translateY(8px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes arcGrow_W2跟教达标2 {
+                    0% { stroke-dashoffset: var(--arc-len); }
+                    100% { stroke-dashoffset: var(--final-offset); }
+                }
+                @keyframes pulseGlow_W2跟教达标2 {
+                    0%, 100% { filter: drop-shadow(0 0 2px #dc262644); }
+                    50% { filter: drop-shadow(0 0 8px #dc262688); }
+                }
+                .g-val-W2跟教达标2 { animation: countUp_W2跟教达标2 0.8s ease-out 0.3s both; }
+                .g-glow-W2跟教达标2 { animation: pulseGlow_W2跟教达标2 2.5s ease-in-out 3s infinite; }
+                .g-arc-W2跟教达标2 {
+                    stroke-dashoffset: var(--arc-len);
+                    animation: arcGrow_W2跟教达标2 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+                }
+            </style>
+        </defs>
+        <!-- 背景弧 -->
         <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
+        <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
         
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">0</text>
-        <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
-        <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W2跟教达标(≥2)</text>
+        <text class="g-val-W2跟教达标2" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">0</text>
+        <text class="g-val-W2跟教达标2" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W2达标(≥2)</text>
     </svg>
 </div><div class="gauge-container">
-    <svg viewBox="0 0 180 180" width="180" height="180">
+    <svg viewBox="0 0 180 215" width="180" height="215">
+        <defs>
+            <linearGradient id="gauge-anim-W3跟教达标2-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.85" />
+                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+            </linearGradient>
+            <style>
+                @keyframes countUp_W3跟教达标2 {
+                    0% { opacity: 0; transform: translateY(8px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes arcGrow_W3跟教达标2 {
+                    0% { stroke-dashoffset: var(--arc-len); }
+                    100% { stroke-dashoffset: var(--final-offset); }
+                }
+                @keyframes pulseGlow_W3跟教达标2 {
+                    0%, 100% { filter: drop-shadow(0 0 2px #dc262644); }
+                    50% { filter: drop-shadow(0 0 8px #dc262688); }
+                }
+                .g-val-W3跟教达标2 { animation: countUp_W3跟教达标2 0.8s ease-out 0.3s both; }
+                .g-glow-W3跟教达标2 { animation: pulseGlow_W3跟教达标2 2.5s ease-in-out 3s infinite; }
+                .g-arc-W3跟教达标2 {
+                    stroke-dashoffset: var(--arc-len);
+                    animation: arcGrow_W3跟教达标2 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+                }
+            </style>
+        </defs>
+        <!-- 背景弧 -->
         <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
+        <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
         
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">0</text>
-        <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
-        <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W3跟教达标(≥2)</text>
+        <text class="g-val-W3跟教达标2" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">0</text>
+        <text class="g-val-W3跟教达标2" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W3达标(≥2)</text>
     </svg>
 </div><div class="gauge-container">
-    <svg viewBox="0 0 180 180" width="180" height="180">
+    <svg viewBox="0 0 180 215" width="180" height="215">
+        <defs>
+            <linearGradient id="gauge-anim-W4跟教达标3-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.85" />
+                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+            </linearGradient>
+            <style>
+                @keyframes countUp_W4跟教达标3 {
+                    0% { opacity: 0; transform: translateY(8px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes arcGrow_W4跟教达标3 {
+                    0% { stroke-dashoffset: var(--arc-len); }
+                    100% { stroke-dashoffset: var(--final-offset); }
+                }
+                @keyframes pulseGlow_W4跟教达标3 {
+                    0%, 100% { filter: drop-shadow(0 0 2px #dc262644); }
+                    50% { filter: drop-shadow(0 0 8px #dc262688); }
+                }
+                .g-val-W4跟教达标3 { animation: countUp_W4跟教达标3 0.8s ease-out 0.3s both; }
+                .g-glow-W4跟教达标3 { animation: pulseGlow_W4跟教达标3 2.5s ease-in-out 3s infinite; }
+                .g-arc-W4跟教达标3 {
+                    stroke-dashoffset: var(--arc-len);
+                    animation: arcGrow_W4跟教达标3 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+                }
+            </style>
+        </defs>
+        <!-- 背景弧 -->
         <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
+        <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
         
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">0</text>
-        <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
-        <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W4跟教达标(≥3)</text>
+        <text class="g-val-W4跟教达标3" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">0</text>
+        <text class="g-val-W4跟教达标3" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W4达标(≥3)</text>
     </svg>
 </div>
         </div>
@@ -1266,7 +1460,7 @@ function downloadCSV() {
     const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 23:16.csv';
+    link.download = '新人带教汇总_2026-06-06 00:05.csv';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1290,7 +1484,7 @@ function downloadExcel() {
     const blob = new Blob(['﻿' + html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 23:16.xls';
+    link.download = '新人带教汇总_2026-06-06 00:05.xls';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1303,6 +1497,8 @@ setTimeout(() => {
         location.reload();
     }
 }, 30 * 60 * 1000);
+
+/* ===== 仪表盘弧线生长动画由CSS @keyframes + CSS变量驱动，无需JS ===== */
 </script>
 </body>
 </html>
