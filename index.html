@@ -5,12 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>传发金融 · 新人带教管理看板</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #2c3e50; }
 
-.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
-.header h1 { font-size: 20px; font-weight: 600; }
-.header .meta { font-size: 12px; opacity: 0.85; text-align: right; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 32px; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+.header-left h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+.header-left .subtitle { font-size: 12px; opacity: 0.85; }
+.header-meta { font-size: 12px; opacity: 0.85; text-align: right; line-height: 1.6; white-space: nowrap; }
+.header-right { min-width: 280px; max-width: 350px; }
+
+/* 更新日志面板 */
+.update-log-panel { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px 14px; backdrop-filter: blur(4px); }
+.update-log-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+.update-log-count { font-size: 11px; background: rgba(255,255,255,0.25); padding: 1px 6px; border-radius: 10px; }
+.update-log-list { max-height: 180px; overflow-y: auto; }
+.update-log-item { padding: 5px 8px; margin-bottom: 4px; border-radius: 4px; font-size: 11px; line-height: 1.4; }
+.update-log-time { font-weight: 600; margin-bottom: 2px; }
+.update-log-summary { opacity: 0.9; word-break: break-all; }
+.update-log-footer { font-size: 10px; opacity: 0.7; text-align: center; margin-top: 6px; }
+.update-log-empty { font-size: 12px; opacity: 0.7; text-align: center; padding: 12px 0; }
 
 .tabs { display: flex; background: white; border-bottom: 2px solid #e8ecf1; padding: 0 24px; gap: 4px; overflow-x: auto; }
 .tab-btn { padding: 14px 20px; border: none; background: none; cursor: pointer; font-size: 14px; color: #666; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .2s; white-space: nowrap; }
@@ -84,7 +97,7 @@ tr:hover td { background: #f8f9ff; }
 
 @media print {
     body { background: white; }
-    .tabs, .update-banner { display: none; }
+    .tabs, .update-banner, .header-right { display: none; }
     .tab-panel { display: block !important; margin-bottom: 20px; }
     .new-row { background: white !important; }
 }
@@ -93,19 +106,31 @@ tr:hover td { background: #f8f9ff; }
 <body>
 
 <div class="header">
-    <div>
+    <div class="header-left">
         <h1>传发金融 · 新人带教管理看板</h1>
+        <div class="subtitle">数据100%来自4个源文档 · 自动追踪变化 · 每日两次更新</div>
     </div>
-    <div class="meta">
-        数据更新: 2026-06-05 20:53<br>
-        快照基线: 首次
+    <div class="header-meta">
+        当前数据时间: 2026-06-05 21:15<br>
+        快照基线: 2026-06-05 21:15<br>
+        访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
+    </div>
+    <div class="header-right">
+        <div class="update-log-panel">
+        <div class="update-log-title">📋 更新日志 <span class="update-log-count">共1次</span></div>
+        <div class="update-log-list">
+            <div class="update-log-item" style="border-left: 3px solid #4cd137;background:#f0fdf4;">
+            <div class="update-log-time">🆕 2026-06-05 21:15</div>
+            <div class="update-log-summary">数据已同步，无新增变化</div>
+        </div>
+        </div>
+        <div class="update-log-footer">最近1条 · 最多保留20条</div>
+    </div>
     </div>
 </div>
 
 <!-- 更新提示 -->
-<div class="update-banner info">
-    首次生成看板 · 所有数据已标注为最新 (后续更新将自动高亮新增项)
-</div>
+<div class="update-banner info">本次更新无新增数据变化</div>
 
 <!-- KPI卡片 -->
 <div class="kpi-bar">
@@ -153,10 +178,10 @@ tr:hover td { background: #f8f9ff; }
                 </tr>
             </thead>
             <tbody>
-                <tr class="new-row">
+                <tr class="">
     <td>1</td>
-    <td>钟丽 <span class="new-tag">●新</span></td>
-    <td><strong>武林涛 <span class="new-badge">NEW</span></strong></td>
+    <td>钟丽</td>
+    <td><strong>武林涛</strong></td>
     <td>传发太原混合S2B</td>
     <td>2026/05/29</td>
     <td>1</td>
@@ -172,10 +197,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>2</td>
-    <td>秦文文 <span class="new-tag">●新</span></td>
-    <td><strong>杨雯心 <span class="new-badge">NEW</span></strong></td>
+    <td>秦文文</td>
+    <td><strong>杨雯心</strong></td>
     <td>电销三组</td>
     <td>2026/05/29</td>
     <td>3</td>
@@ -191,10 +216,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>3</td>
-    <td>薛秉权 <span class="new-tag">●新</span></td>
-    <td><strong>王明亮 <span class="new-badge">NEW</span></strong></td>
+    <td>薛秉权</td>
+    <td><strong>王明亮</strong></td>
     <td>传发太原单户S2B</td>
     <td>2026/05/30</td>
     <td>2</td>
@@ -210,10 +235,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>4</td>
-    <td>林伟民 <span class="new-tag">●新</span></td>
-    <td><strong>宁家磊 <span class="new-badge">NEW</span></strong></td>
+    <td>林伟民</td>
+    <td><strong>宁家磊</strong></td>
     <td>小赢一手2A</td>
     <td>2026/06/01</td>
     <td>1</td>
@@ -229,10 +254,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>5</td>
-    <td>王义杰 <span class="new-tag">●新</span></td>
-    <td><strong>米叶卉 <span class="new-badge">NEW</span></strong></td>
+    <td>王义杰</td>
+    <td><strong>米叶卉</strong></td>
     <td>传发太原防诉M1A</td>
     <td>2026/06/03</td>
     <td>2</td>
@@ -248,10 +273,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>6</td>
-    <td>曹泽州 <span class="new-tag">●新</span></td>
-    <td><strong>冯冰涛 <span class="new-badge">NEW</span></strong></td>
+    <td>曹泽州</td>
+    <td><strong>冯冰涛</strong></td>
     <td>传发太原单户S2B</td>
     <td>2026/06/03</td>
     <td>3</td>
@@ -267,10 +292,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>7</td>
-    <td>谭炯 <span class="new-tag">●新</span></td>
-    <td><strong>陈朝刚 <span class="new-badge">NEW</span></strong></td>
+    <td>谭炯</td>
+    <td><strong>陈朝刚</strong></td>
     <td>小赢一手2C</td>
     <td>2026/06/04</td>
     <td>1</td>
@@ -286,10 +311,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>8</td>
-    <td>汤志华 <span class="new-tag">●新</span></td>
-    <td><strong>汤小华 <span class="new-badge">NEW</span></strong></td>
+    <td>汤志华</td>
+    <td><strong>汤小华</strong></td>
     <td>人才发展</td>
     <td>2026/06/04</td>
     <td>1</td>
@@ -305,10 +330,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>9</td>
-    <td>伍影舟 <span class="new-tag">●新</span></td>
-    <td><strong>卢瑜 <span class="new-badge">NEW</span></strong></td>
+    <td>伍影舟</td>
+    <td><strong>卢瑜</strong></td>
     <td>小赢一手2B</td>
     <td>2026/06/05</td>
     <td>1</td>
@@ -324,10 +349,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>10</td>
-    <td>武浩东 <span class="new-tag">●新</span></td>
-    <td><strong>程锦华 <span class="new-badge">NEW</span></strong></td>
+    <td>武浩东</td>
+    <td><strong>程锦华</strong></td>
     <td>传发太原混合S1A</td>
     <td>2026/06/05</td>
     <td>1</td>
@@ -343,10 +368,10 @@ tr:hover td { background: #f8f9ff; }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="new-row">
+<tr class="">
     <td>11</td>
-    <td>曹艳斌 <span class="new-tag">●新</span></td>
-    <td><strong>房航宇 <span class="new-badge">NEW</span></strong></td>
+    <td>曹艳斌</td>
+    <td><strong>房航宇</strong></td>
     <td>人才发展</td>
     <td>无记录</td>
     <td>-</td>
@@ -392,8 +417,8 @@ tr:hover td { background: #f8f9ff; }
                 </tr>
             </thead>
             <tbody>
-                <tr class="new-row">
-    <td><strong>武林涛 <span class="new-badge">NEW</span></strong></td>
+                <tr class="">
+    <td><strong>武林涛</strong></td>
     <td>钟丽</td>
     <td>传发太原混合S2B</td>
     <td>1</td>
@@ -417,8 +442,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>杨雯心 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>杨雯心</strong></td>
     <td>秦文文</td>
     <td>电销三组</td>
     <td>3</td>
@@ -442,8 +467,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>王明亮 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>王明亮</strong></td>
     <td>薛秉权</td>
     <td>传发太原单户S2B</td>
     <td>2</td>
@@ -467,8 +492,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>宁家磊 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>宁家磊</strong></td>
     <td>林伟民</td>
     <td>小赢一手2A</td>
     <td>1</td>
@@ -492,8 +517,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>米叶卉 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>米叶卉</strong></td>
     <td>王义杰</td>
     <td>传发太原防诉M1A</td>
     <td>2</td>
@@ -517,8 +542,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>冯冰涛 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>冯冰涛</strong></td>
     <td>曹泽州</td>
     <td>传发太原单户S2B</td>
     <td>3</td>
@@ -542,8 +567,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>陈朝刚 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>陈朝刚</strong></td>
     <td>谭炯</td>
     <td>小赢一手2C</td>
     <td>1</td>
@@ -567,8 +592,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>汤小华 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>汤小华</strong></td>
     <td>汤志华</td>
     <td>人才发展</td>
     <td>1</td>
@@ -592,8 +617,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>卢瑜 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>卢瑜</strong></td>
     <td>伍影舟</td>
     <td>小赢一手2B</td>
     <td>1</td>
@@ -617,8 +642,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>程锦华 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>程锦华</strong></td>
     <td>武浩东</td>
     <td>传发太原混合S1A</td>
     <td>1</td>
@@ -642,8 +667,8 @@ tr:hover td { background: #f8f9ff; }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="new-row">
-    <td><strong>房航宇 <span class="new-badge">NEW</span></strong></td>
+<tr class="">
+    <td><strong>房航宇</strong></td>
     <td>曹艳斌</td>
     <td>人才发展</td>
     <td>0</td>
@@ -686,7 +711,7 @@ tr:hover td { background: #f8f9ff; }
         <div class="kpi-card warning"><div class="label">无带教记录</div><div class="value">1人</div></div>
         <div class="kpi-card"><div class="label">跟教总计</div><div class="value" style="color:#667eea">16次</div></div>
         <div class="kpi-card"><div class="label">对练总计</div><div class="value" style="color:#764ba2">8次</div></div>
-        <div class="kpi-card danger"><div class="label">新增变化项</div><div class="value">47</div></div>
+        <div class="kpi-card danger"><div class="label">新增变化项</div><div class="value">0</div></div>
     </div>
 
     <!-- 仪表盘图 -->
@@ -755,13 +780,13 @@ tr:hover td { background: #f8f9ff; }
     <div class="progress-label"><span>W1话术对练达标率</span><span>1/11人 (9%)</span></div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:9%; background:#e74c3c"></div></div>
 </div><div class="progress-item">
-    <div class="progress-label"><span>W2跟教达标率</span><span>0/11人 (0%)</span></div>
+    <div class="progress-label"><span>W2</span><span>0/11人 (0%)</span></div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#e74c3c"></div></div>
 </div><div class="progress-item">
-    <div class="progress-label"><span>W3跟教达标率</span><span>0/11人 (0%)</span></div>
+    <div class="progress-label"><span>W3</span><span>0/11人 (0%)</span></div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#e74c3c"></div></div>
 </div><div class="progress-item">
-    <div class="progress-label"><span>W4跟教达标率</span><span>0/11人 (0%)</span></div>
+    <div class="progress-label"><span>W4</span><span>0/11人 (0%)</span></div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#e74c3c"></div></div>
 </div>
     </div>
@@ -778,14 +803,14 @@ tr:hover td { background: #f8f9ff; }
                 <tr><td>话术演练记录表</td><td>智能表格</td><td>4条</td><td>2人</td></tr>
                 <tr><td>录音拆解学习心得</td><td>智能表格</td><td>0条</td><td>0人</td></tr>
                 <tr><td>话术评分卡</td><td>智能表格</td><td>1条</td><td>1人</td></tr>
-                <tr class="verify-row"><td colspan="4">✅ 交叉验证: 跟教16条 + 对练8条 + 评分卡1条 | 100%源文档驱动，零硬编码</td></tr>
+                <tr class="verify-row"><td colspan="4">✅ 交叉验证: 带教16条 + 对练8条 + 评分卡1条 | 100%源文档驱动，零硬编码</td></tr>
             </tbody>
         </table>
     </div>
 </div>
 
 <div class="footer-note">
-    <strong>⚡ 数据声明：</strong>本看板所有数据100%来自4个源文档（带教过程评估表、话术演练记录表、录音拆解学习心得、话术评分卡），通过企微智能表格API实时读取。新增数据用 <span style="background:#ffeb3b;padding:1px 4px;border-radius:2px;">高亮</span> 标注。快照对比机制追踪每次更新变化。
+    <strong>⚠️ 数据声明：</strong>本看板所有数据100%来自4个源文档（带教过程评估表、话术演练记录表、录音拆解学习心得、话术评分卡），通过企微智能表格API实时读取。新增数据用 <span style="background:#ffeb3b;padding:1px 4px;border-radius:2px;">高亮</span> 标注。快照对比机制追踪每次更新变化。右上角更新日志持久化保存，员工可随时查看历史更新内容。
 </div>
 
 </div>
@@ -797,6 +822,13 @@ function switchTab(id) {
     document.getElementById(id).classList.add('active');
     event.target.classList.add('active');
 }
+
+// 自动刷新提示（每30分钟）
+setTimeout(() => {
+    if (confirm('看板数据可能已更新，是否刷新页面？')) {
+        location.reload();
+    }
+}, 30 * 60 * 1000);
 </script>
 </body>
 </html>
