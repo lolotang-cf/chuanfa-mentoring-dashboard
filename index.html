@@ -13,17 +13,19 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .header-left .subtitle { font-size: 12px; opacity: 0.85; }
 .header-meta { font-size: 12px; opacity: 0.85; text-align: right; line-height: 1.6; white-space: nowrap; }
 .header-right { min-width: 280px; max-width: 350px; }
+.export-btn { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 3px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-left: 8px; transition: all .2s; }
+.export-btn:hover { background: rgba(255,255,255,0.35); }
 
-/* 更新日志面板 */
-.update-log-panel { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px 14px; backdrop-filter: blur(4px); }
-.update-log-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-.update-log-count { font-size: 11px; background: rgba(255,255,255,0.25); padding: 1px 6px; border-radius: 10px; }
+/* 更新日志面板 - 显式设置深色文字避免继承header白色 */
+.update-log-panel { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 10px 14px; backdrop-filter: blur(4px); color: #333 !important; }
+.update-log-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; color: #333 !important; }
+.update-log-count { font-size: 11px; background: #e8ecf1; color: #555; padding: 1px 6px; border-radius: 10px; }
 .update-log-list { max-height: 180px; overflow-y: auto; }
-.update-log-item { padding: 5px 8px; margin-bottom: 4px; border-radius: 4px; font-size: 11px; line-height: 1.4; }
-.update-log-time { font-weight: 600; margin-bottom: 2px; }
-.update-log-summary { opacity: 0.9; word-break: break-all; }
-.update-log-footer { font-size: 10px; opacity: 0.7; text-align: center; margin-top: 6px; }
-.update-log-empty { font-size: 12px; opacity: 0.7; text-align: center; padding: 12px 0; }
+.update-log-item { padding: 5px 8px; margin-bottom: 4px; border-radius: 4px; font-size: 11px; line-height: 1.4; color: #333 !important; }
+.update-log-time { font-weight: 600; margin-bottom: 2px; color: #1a1a1a !important; }
+.update-log-summary { color: #555 !important; word-break: break-all; }
+.update-log-footer { font-size: 10px; color: #999 !important; text-align: center; margin-top: 6px; }
+.update-log-empty { font-size: 12px; color: #999 !important; text-align: center; padding: 12px 0; }
 
 .tabs { display: flex; background: white; border-bottom: 2px solid #e8ecf1; padding: 0 24px; gap: 4px; overflow-x: auto; }
 .tab-btn { padding: 14px 20px; border: none; background: none; cursor: pointer; font-size: 14px; color: #666; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .2s; white-space: nowrap; }
@@ -108,23 +110,26 @@ tr:hover td { background: #f8f9ff; }
 <div class="header">
     <div class="header-left">
         <h1>传发金融 · 新人带教管理看板</h1>
-        <div class="subtitle">数据100%来自4个源文档 · 自动追踪变化 · 每日两次更新</div>
+        <div class="subtitle">数据100%来自4个源文档 · 自动追踪变化 · 每日两次更新 &nbsp;&nbsp;<button class="export-btn" onclick="downloadCSV()">📥 导出CSV</button></div>
     </div>
     <div class="header-meta">
-        当前数据时间: 2026-06-05 21:15<br>
-        快照基线: 2026-06-05 21:15<br>
+        当前数据时间: 2026-06-05 21:36<br>
+        快照基线: 2026-06-05 21:36<br>
         访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
     </div>
     <div class="header-right">
         <div class="update-log-panel">
-        <div class="update-log-title">📋 更新日志 <span class="update-log-count">共1次</span></div>
+        <div class="update-log-title">📋 更新日志 <span class="update-log-count">共2次</span></div>
         <div class="update-log-list">
             <div class="update-log-item" style="border-left: 3px solid #4cd137;background:#f0fdf4;">
-            <div class="update-log-time">🆕 2026-06-05 21:15</div>
+            <div class="update-log-time">🆕 2026-06-05 21:36</div>
+            <div class="update-log-summary">数据已同步，无新增变化</div>
+        </div><div class="update-log-item" style="border-left: 3px solid #e8ecf1;">
+            <div class="update-log-time">2026-06-05 21:15</div>
             <div class="update-log-summary">数据已同步，无新增变化</div>
         </div>
         </div>
-        <div class="update-log-footer">最近1条 · 最多保留20条</div>
+        <div class="update-log-footer">最近2条 · 最多保留20条</div>
     </div>
     </div>
 </div>
@@ -821,6 +826,29 @@ function switchTab(id) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     event.target.classList.add('active');
+}
+
+// 导出CSV功能
+function downloadCSV() {
+    const csv = `序号,带教师傅,新员工姓名,所属部门,最早记录日期,W1跟教,W1对练,W1 F03,W2跟教,W2对练,W2 F03,W3跟教,W3对练,W3 F03,W4跟教,W4对练,W4 F03
+1,钟丽,武林涛,传发太原混合S2B,2026/05/29,1,0,✓,0,0,✗,0,0,✗,0,0,✗
+2,秦文文,杨雯心,电销三组,2026/05/29,3,6,✓,0,0,✗,0,0,✗,0,0,✗
+3,薛秉权,王明亮,传发太原单户S2B,2026/05/30,2,1,✓,0,0,✗,0,0,✗,0,0,✗
+4,林伟民,宁家磊,小赢一手2A,2026/06/01,1,0,✓,0,0,✗,0,0,✗,0,0,✗
+5,王义杰,米叶卉,传发太原防诉M1A,2026/06/03,2,0,✓,0,0,✗,0,0,✗,0,0,✗
+6,曹泽州,冯冰涛,传发太原单户S2B,2026/06/03,3,0,✓,0,0,✗,0,0,✗,0,0,✗
+7,谭炯,陈朝刚,小赢一手2C,2026/06/04,1,1,✓,0,0,✗,0,0,✗,0,0,✗
+8,汤志华,汤小华,人才发展,2026/06/04,1,0,✓,0,0,✗,0,0,✗,0,0,✗
+9,伍影舟,卢瑜,小赢一手2B,2026/06/05,1,0,✓,0,0,✗,0,0,✗,0,0,✗
+10,武浩东,程锦华,传发太原混合S1A,2026/06/05,1,0,✓,0,0,✗,0,0,✗,0,0,✗
+11,曹艳斌,房航宇,人才发展,无记录,0,0,✗,0,0,✗,0,0,✗,0,0,✗`;
+    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = '新人带教汇总_2026-06-05 21:36.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 // 自动刷新提示（每30分钟）
