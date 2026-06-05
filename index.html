@@ -5,113 +5,389 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>传发金融 · 新人带教管理看板</title>
 <style>
+/* ===== V6.6 传发金融橙色主题 — 弧形波浪渐变顶栏 ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #2c3e50; }
 
-.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 32px; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
-.header-left h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
-.header-left .subtitle { font-size: 12px; opacity: 0.85; }
-.header-meta { font-size: 12px; opacity: 0.85; text-align: right; line-height: 1.6; white-space: nowrap; }
-.header-right { min-width: 280px; max-width: 350px; }
+/* -- 设计Token -- */
+:root {
+  --accent: #E85A2A;
+  --accent-dark: #D04A1A;
+  --accent-light: #F08030;
+  --accent-bg: #FFF6F0;
+  --bg-page: #f5f4f1;
+  --bg-card: #ffffff;
+  --bg-th: #f0ede8;
+  --bg-hover: #faf8f5;
+  --text-primary: #1a1d23;
+  --text-secondary: #5f5b57;
+  --text-muted: #8c8883;
+  --green: #0d9488;
+  --green-bg: #f0fdfa;
+  --yellow: #d97706;
+  --yellow-bg: #fffbeb;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --border-card: 1px solid rgba(0,0,0,0.07);
+  --border-divider: 1px solid rgba(0,0,0,0.05);
+  --border-input: 1px solid rgba(0,0,0,0.12);
+  --shadow-card: rgba(0,0,0,0.03) 0px 1px 2px, rgba(0,0,0,0.02) 0px 3px 6px;
+  --shadow-elevated: rgba(0,0,0,0.04) 0px 2px 4px, rgba(0,0,0,0.03) 0px 6px 12px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Microsoft YaHei", sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 顶栏: 橙色渐变 + SVG弧形波浪 ===== */
+.header {
+  position: relative;
+  background: linear-gradient(135deg, #E85A2A 0%, #D04A1A 40%, #F08030 100%);
+  color: white;
+  padding: 22px 32px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+/* 弧形波浪底部 */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--bg-page);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.header-left { z-index: 1; }
+.header-left h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: white;
+  letter-spacing: -0.2px;
+}
+.header-left h1 .brand-accent {
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.header-left .subtitle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+}
+.header-meta {
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  text-align: right;
+  line-height: 1.6;
+  white-space: nowrap;
+  z-index: 1;
+}
+.header-right { min-width: 280px; max-width: 350px; z-index: 1; }
+
 .export-dropdown { position: relative; display: inline-block; margin-left: 8px; }
-.export-btn { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 3px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; transition: all .2s; }
-.export-btn:hover { background: rgba(255,255,255,0.35); }
-.export-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 2px; background: white; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); min-width: 120px; z-index: 100; overflow: hidden; }
+.export-btn {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all .15s;
+}
+.export-btn:hover {
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.35);
+}
+.export-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevated);
+  min-width: 120px;
+  z-index: 100;
+  overflow: hidden;
+  border: var(--border-card);
+}
 .export-menu.show { display: block; }
-.export-menu a { display: block; padding: 8px 12px; font-size: 12px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f2f5; }
-.export-menu a:hover { background: #f0f2f5; color: #667eea; }
+.export-menu a {
+  display: block;
+  padding: 9px 14px;
+  font-size: 12px;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: var(--border-divider);
+}
+.export-menu a:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
 .export-menu a:last-child { border-bottom: none; }
 
-/* 更新日志面板 - 显式设置深色文字避免继承header白色 */
-.update-log-panel { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 10px 14px; backdrop-filter: blur(4px); color: #333 !important; max-height: 320px; overflow-y: auto; }
-.update-log-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; color: #333 !important; padding-bottom: 4px; border-bottom: 1px solid #e8ecf1; }
-.update-log-count { font-size: 11px; background: #e8ecf1; color: #555; padding: 1px 6px; border-radius: 10px; }
-.update-log-list { }
-.update-log-item { padding: 4px 8px; margin-bottom: 3px; border-radius: 4px; font-size: 10px; line-height: 1.4; color: #333 !important; }
-.update-log-time { font-weight: 600; margin-bottom: 1px; color: #1a1a1a !important; }
-.update-log-summary { color: #555 !important; word-break: break-all; }
-.update-log-footer { font-size: 10px; color: #999 !important; text-align: center; margin-top: 4px; }
-.update-log-empty { font-size: 12px; color: #999 !important; text-align: center; padding: 12px 0; }
+/* ===== 更新日志面板 ===== */
+.update-log-panel {
+  background: rgba(255,255,255,0.94);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  backdrop-filter: blur(8px);
+  color: var(--text-primary) !important;
+  max-height: 320px;
+  overflow-y: auto;
+  box-shadow: var(--shadow-card);
+  border: var(--border-card);
+}
+.update-log-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-primary) !important;
+  padding-bottom: 4px;
+  border-bottom: var(--border-divider);
+}
+.update-log-count {
+  font-size: 11px;
+  background: var(--bg-th);
+  color: var(--text-secondary);
+  padding: 1px 7px;
+  border-radius: 10px;
+}
+.update-log-item {
+  padding: 4px 8px;
+  margin-bottom: 3px;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--text-primary) !important;
+}
+.update-log-time { font-weight: 600; margin-bottom: 1px; color: var(--text-primary) !important; }
+.update-log-summary { color: var(--text-secondary) !important; word-break: break-all; }
+.update-log-footer { font-size: 10px; color: var(--text-muted) !important; text-align: center; margin-top: 4px; }
+.update-log-empty { font-size: 12px; color: var(--text-muted) !important; text-align: center; padding: 12px 0; }
 .log-details { margin-top: 4px; }
-.log-details summary { font-size: 10px; color: #667eea; cursor: pointer; padding: 2px 4px; user-select: none; }
-.log-details summary:hover { color: #764ba2; }
+.log-details summary { font-size: 10px; color: var(--accent); cursor: pointer; padding: 2px 4px; user-select: none; }
+.log-details summary:hover { color: var(--accent-dark); }
 
-/* 筛选下拉 */
-.filter-bar { display: flex; gap: 12px; padding: 12px 24px; background: white; border-bottom: 1px solid #e8ecf1; align-items: center; flex-wrap: wrap; }
-.filter-bar label { font-size: 12px; color: #888; white-space: nowrap; }
-.filter-bar select { padding: 4px 8px; border: 1px solid #d0d5dd; border-radius: 4px; font-size: 12px; color: #333; background: white; min-width: 100px; cursor: pointer; }
-.filter-bar select:focus { border-color: #667eea; outline: none; }
-.filter-reset { font-size: 11px; color: #667eea; cursor: pointer; border: none; background: none; text-decoration: underline; }
+/* ===== 筛选栏 ===== */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  padding: 12px 24px;
+  background: var(--bg-card);
+  border-bottom: var(--border-divider);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-bar label { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.filter-bar select {
+  padding: 5px 10px;
+  border: var(--border-input);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-primary);
+  background: white;
+  min-width: 100px;
+  cursor: pointer;
+  transition: border-color .15s;
+}
+.filter-bar select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(232,90,42,0.1);
+}
+.filter-reset { font-size: 11px; color: var(--accent); cursor: pointer; border: none; background: none; text-decoration: underline; }
 
-.tabs { display: flex; background: white; border-bottom: 2px solid #e8ecf1; padding: 0 24px; gap: 4px; overflow-x: auto; }
-.tab-btn { padding: 14px 20px; border: none; background: none; cursor: pointer; font-size: 14px; color: #666; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .2s; white-space: nowrap; }
-.tab-btn:hover { color: #667eea; }
-.tab-btn.active { color: #667eea; border-bottom-color: #667eea; font-weight: 600; }
+/* ===== TAB切换 ===== */
+.tabs {
+  display: flex;
+  background: var(--bg-card);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0 24px;
+  gap: 0;
+  overflow-x: auto;
+}
+.tab-btn {
+  padding: 14px 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--accent); }
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
 
-/* 更新横幅 */
-.update-banner { margin: 12px 24px; padding: 10px 16px; border-radius: 8px; font-size: 13px; }
-.update-banner { background: #fff3cd; border: 1px solid #ffc107; color: #856404; }
-.update-banner.info { background: #e3f2fd; border: 1px solid #90caf9; color: #1565c0; }
-.highlight-demo { background: #ffeb3b; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+/* ===== 更新横幅 ===== */
+.update-banner { margin: 12px 24px; padding: 10px 16px; border-radius: var(--radius-md); font-size: 13px; }
+.update-banner { background: var(--yellow-bg); border: 1px solid rgba(217,119,6,0.2); color: #92400e; }
+.update-banner.info { background: #e8f4fd; border: 1px solid rgba(10,22,40,0.12); color: #1a365d; }
+.highlight-demo { background: #fef3c7; padding: 1px 4px; border-radius: var(--radius-sm); font-weight: 600; }
 
-/* 新增高亮 */
-.new-row { background: #fffde7 !important; animation: fadeHighlight 3s ease-in-out; }
-.new-row:hover td { background: #fff9c4 !important; }
-.new-badge { display: inline-block; background: #ff6d00; color: white; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-left: 4px; vertical-align: middle; font-weight: 700; letter-spacing: 0.5px; animation: pulse 1.5s infinite; }
-.new-tag { color: #ff6d00; font-weight: 700; font-size: 11px; }
+/* ===== 新增高亮 ===== */
+.new-row { background: #fff8f0 !important; animation: fadeHighlight 3s ease-in-out; }
+.new-row:hover td { background: #fff0e0 !important; }
+.new-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-left: 4px;
+  vertical-align: middle;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  animation: pulse 1.5s infinite;
+}
+.new-tag { color: var(--accent); font-weight: 700; font-size: 11px; }
 
 @keyframes fadeHighlight {
-    0% { background: #ffeb3b !important; }
-    100% { background: #fffde7 !important; }
+    0% { background: #ffe8d6 !important; }
+    100% { background: #fff8f0 !important; }
 }
 @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
+    50% { opacity: 0.65; }
 }
 
+/* ===== KPI卡片 ===== */
 .kpi-bar { display: flex; gap: 12px; padding: 16px 24px; flex-wrap: wrap; }
-.kpi-card { background: white; border-radius: 10px; padding: 14px 18px; min-width: 130px; flex: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-.kpi-card .label { font-size: 11px; color: #888; margin-bottom: 4px; }
-.kpi-card .value { font-size: 26px; font-weight: 700; }
-.kpi-card.primary .value { color: #667eea; }
-.kpi-card.success .value { color: #4cd137; }
-.kpi-card.warning .value { color: #f39c12; }
-.kpi-card.danger .value { color: #e74c3c; }
+.kpi-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  min-width: 130px;
+  flex: 1;
+  border: var(--border-card);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow .15s;
+}
+.kpi-card:hover { box-shadow: var(--shadow-elevated); }
+.kpi-card .label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; letter-spacing: 0.2px; }
+.kpi-card .value { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+.kpi-card.primary .value { color: var(--accent); }
+.kpi-card.success .value { color: var(--green); }
+.kpi-card.warning .value { color: var(--yellow); }
+.kpi-card.danger .value { color: var(--red); }
 
+/* ===== 内容区 ===== */
 .content { padding: 0 24px 24px; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
-.table-wrap { overflow-x: auto; background: white; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+/* ===== 表格 ===== */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: var(--border-card);
+  box-shadow: var(--shadow-card);
+}
 table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 900px; }
-th { background: #e8ecf1; color: #2c3e50; padding: 10px 8px; text-align: center; font-weight: 600; font-size: 12px; white-space: nowrap; position: sticky; top: 0; z-index: 1; }
-td { padding: 8px; text-align: center; border-bottom: 1px solid #f0f2f5; }
-tr:hover td { background: #f8f9ff; }
+th {
+  background: var(--bg-th);
+  color: var(--text-primary);
+  padding: 11px 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+td {
+  padding: 9px 8px;
+  text-align: center;
+  border-bottom: var(--border-divider);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg-hover); }
 
-.badge-good { color: #4cd137; font-weight: 700; }
-.badge-bad { color: #e74c3c; font-weight: 700; }
+.badge-good { color: var(--green); font-weight: 700; }
+.badge-bad { color: var(--red); font-weight: 700; }
 
 .summary-section { margin-top: 20px; }
-.summary-section h3 { font-size: 16px; color: #2c3e50; padding: 12px 0 8px; border-bottom: 2px solid #667eea; margin-bottom: 12px; }
+.summary-section h3 {
+  font-size: 16px;
+  color: var(--text-primary);
+  padding: 12px 0 8px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+}
 
-/* 仪表盘区域 */
+/* ===== 仪表盘 ===== */
 .gauge-grid { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; padding: 16px 0; }
 .gauge-container { text-align: center; }
-.gauge-container svg { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06)); }
+.gauge-container svg { filter: drop-shadow(0 1px 3px rgba(0,0,0,0.05)); }
 
-/* 进度条 */
-.progress-section { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 16px; }
-.progress-section h4 { font-size: 14px; color: #667eea; margin-bottom: 14px; }
+/* ===== 进度条 ===== */
+.progress-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: var(--border-card);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 16px;
+}
+.progress-section h4 { font-size: 14px; color: var(--text-primary); margin-bottom: 14px; }
 .progress-item { margin-bottom: 12px; }
-.progress-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; color: #555; }
-.progress-bar-bg { height: 10px; background: #e8ecf1; border-radius: 5px; overflow: hidden; }
-.progress-bar-fill { height: 100%; border-radius: 5px; transition: width 0.8s ease; }
+.progress-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; color: var(--text-secondary); }
+.progress-bar-bg { height: 8px; background: var(--bg-th); border-radius: 4px; overflow: hidden; }
+.progress-bar-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
 
-.detail-card { background: white; border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-.detail-card h4 { font-size: 14px; color: #667eea; margin-bottom: 8px; }
+/* ===== 详情卡片 ===== */
+.detail-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  border: var(--border-card);
+  box-shadow: var(--shadow-card);
+}
+.detail-card h4 { font-size: 14px; color: var(--text-primary); margin-bottom: 8px; }
 
-.footer-note { background: #fff8e1; border-left: 3px solid #f39c12; padding: 12px 16px; margin: 20px 0; font-size: 12px; color: #666; border-radius: 0 6px 6px 0; }
-.verify-row td { background: #f0fdf4 !important; font-weight: 600; font-size: 12px; }
+/* ===== 页脚 ===== */
+.footer-note {
+  background: var(--accent-bg);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 20px 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.verify-row td { background: var(--green-bg) !important; font-weight: 600; font-size: 12px; }
 
 @media print {
     body { background: white; }
@@ -125,7 +401,7 @@ tr:hover td { background: #f8f9ff; }
 
 <div class="header">
     <div class="header-left">
-        <h1>传发金融 · 新人带教管理看板</h1>
+        <h1><span class="brand-accent">传发金融</span> · 新人带教管理看板</h1>
         <div class="subtitle">数据100%来自4个源文档 · 自动追踪变化 · 每日两次更新 &nbsp;&nbsp;
             <div class="export-dropdown">
                 <button class="export-btn" onclick="toggleExportMenu()">📥 数据导出 ▼</button>
@@ -137,24 +413,36 @@ tr:hover td { background: #f8f9ff; }
         </div>
     </div>
     <div class="header-meta">
-        当前数据时间: 2026-06-05 22:22<br>
-        快照基线: 2026-06-05 22:22<br>
+        当前数据时间: 2026-06-05 22:52<br>
+        快照基线: 2026-06-05 22:52<br>
         访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
     </div>
     <div class="header-right">
         <div class="update-log-panel">
         <div class="update-log-title">📋 更新日志</div>
         <div class="update-log-item" style="border-left:3px solid #4cd137;background:#f0fdf4;">
-            <div class="update-log-time">🆕 数据更新 · 2026-06-05 22:22</div>
+            <div class="update-log-time">🆕 数据更新 · 2026-06-05 22:52</div>
             <div class="update-log-summary">数据已同步，无新增变化</div>
         </div>
-        <div class="update-log-item" style="border-left:3px solid #667eea;background:#f4f6ff;">
-            <div class="update-log-time">📦 版本更新 · V6.2 (2026-06-05)</div>
-            <div class="update-log-summary">• 修复更新日志面板文字颜色（白色→深色，提升可读性）<br>• 新增数据导出下拉按钮，支持 CSV 和 Excel 双格式导出</div>
+        <div class="update-log-item" style="border-left:3px solid #E85A2A;background:#fdf6f2;">
+            <div class="update-log-time">📦 版本更新 · V6.5 (2026-06-05)</div>
+            <div class="update-log-summary">• 配色全面重构：Notion暖灰基底 x Stripe精密金融 x 传发橙色点睛<br>• 橙色占比控制10-15%：仅KPI数字/TAB下划线/NEW徽章/聚焦环<br>• 引入CSS变量设计Token体系，Notion式极细边框+多层柔和阴影<br>• 语义色升级：teal绿(#0d9488)/amber黄(#d97706)/red红(#dc2626)<br>• 顶栏深海军蓝(#0a1628)无橙色边线，纯靠内容品质感</div>
         </div>
         <details class="log-details">
-            <summary>📋 历史数据更新（共5次）</summary>
+            <summary>📋 历史数据更新（共9次）</summary>
             <div class="update-log-list" style="max-height:200px;overflow-y:auto;"><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 22:45</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 22:37</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 22:32</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-05 22:22</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
                 <div class="update-log-time">2026-06-05 22:08</div>
                 <div class="update-log-summary">数据已同步，无新增变化</div>
             </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
@@ -172,8 +460,11 @@ tr:hover td { background: #f8f9ff; }
             </div></div>
         </details>
         <details class="log-details">
-            <summary>🔄 历史版本更新（共5个版本）</summary>
+            <summary>🔄 历史版本更新（共6个版本）</summary>
             <div class="update-log-list" style="max-height:200px;overflow-y:auto;"><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">📦 V6.2 (2026-06-05)</div>
+                <div class="update-log-summary">• 修复更新日志面板文字颜色（白色→深色，提升可读性）<br>• 新增数据导出下拉按钮，支持 CSV 和 Excel 双格式导出</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
                 <div class="update-log-time">📦 V6.1 (2026-06-05)</div>
                 <div class="update-log-summary">• 新增右上角数据更新日志栏，持久化到 update_log.json<br>• 每次更新追加一条记录，显示变化摘要（新增员工/师徒变更/新增记录数）<br>• HTML头部右侧显示最近5条更新，最新一条绿色高亮</div>
             </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
@@ -201,8 +492,8 @@ tr:hover td { background: #f8f9ff; }
 <div class="kpi-bar">
     <div class="kpi-card primary"><div class="label">源文档覆盖人数</div><div class="value">11</div></div>
     <div class="kpi-card success"><div class="label">有带教数据人数</div><div class="value">10</div></div>
-    <div class="kpi-card"><div class="label">跟教总次数</div><div class="value" style="color:#667eea">16</div></div>
-    <div class="kpi-card"><div class="label">话术对练总次数</div><div class="value" style="color:#764ba2">8</div></div>
+    <div class="kpi-card"><div class="label">跟教总次数</div><div class="value" style="color:#E85A2A">16</div></div>
+    <div class="kpi-card"><div class="label">话术对练总次数</div><div class="value" style="color:#c0392b">8</div></div>
     <div class="kpi-card warning"><div class="label">话术评分卡</div><div class="value">1</div></div>
     <div class="kpi-card danger"><div class="label">录音拆解</div><div class="value">0</div></div>
 </div>
@@ -784,8 +1075,8 @@ tr:hover td { background: #f8f9ff; }
         <div class="kpi-card primary"><div class="label">本批次新员工</div><div class="value">11人</div></div>
         <div class="kpi-card success"><div class="label">有带教活动</div><div class="value">10人</div></div>
         <div class="kpi-card warning"><div class="label">无带教记录</div><div class="value">1人</div></div>
-        <div class="kpi-card"><div class="label">跟教总计</div><div class="value" style="color:#667eea">16次</div></div>
-        <div class="kpi-card"><div class="label">对练总计</div><div class="value" style="color:#764ba2">8次</div></div>
+        <div class="kpi-card"><div class="label">跟教总计</div><div class="value" style="color:#E85A2A">16次</div></div>
+        <div class="kpi-card"><div class="label">对练总计</div><div class="value" style="color:#c0392b">8次</div></div>
         <div class="kpi-card danger"><div class="label">新增变化项</div><div class="value">0</div></div>
     </div>
 
@@ -795,49 +1086,49 @@ tr:hover td { background: #f8f9ff; }
         <div class="gauge-grid">
             <div class="gauge-container">
     <svg viewBox="0 0 180 180" width="180" height="180">
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8ecf1" stroke-width="14.4" stroke-linecap="round"/>
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 112.0 41.0" fill="none" stroke="#4cd137" stroke-width="14.4" stroke-linecap="round"/>
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#4cd137">10</text>
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 112.0 41.0" fill="none" stroke="#0d9488" stroke-width="14.4" stroke-linecap="round"/>
+        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#0d9488">10</text>
         <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
         <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">整体活跃率</text>
     </svg>
 </div><div class="gauge-container">
     <svg viewBox="0 0 180 180" width="180" height="180">
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8ecf1" stroke-width="14.4" stroke-linecap="round"/>
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
         
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#e74c3c">0</text>
+        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">0</text>
         <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
         <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W1跟教达标(≥6)</text>
     </svg>
 </div><div class="gauge-container">
     <svg viewBox="0 0 180 180" width="180" height="180">
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8ecf1" stroke-width="14.4" stroke-linecap="round"/>
-        <path d="M 134.5 144.5 A 63.0 63.0 0 0 1 112.0 159.0" fill="none" stroke="#e74c3c" stroke-width="14.4" stroke-linecap="round"/>
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#e74c3c">1</text>
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
+        <path d="M 134.5 144.5 A 63.0 63.0 0 0 1 112.0 159.0" fill="none" stroke="#dc2626" stroke-width="14.4" stroke-linecap="round"/>
+        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">1</text>
         <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
         <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W1对练达标(≥3)</text>
     </svg>
 </div><div class="gauge-container">
     <svg viewBox="0 0 180 180" width="180" height="180">
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8ecf1" stroke-width="14.4" stroke-linecap="round"/>
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
         
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#e74c3c">0</text>
+        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">0</text>
         <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
         <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W2跟教达标(≥2)</text>
     </svg>
 </div><div class="gauge-container">
     <svg viewBox="0 0 180 180" width="180" height="180">
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8ecf1" stroke-width="14.4" stroke-linecap="round"/>
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
         
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#e74c3c">0</text>
+        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">0</text>
         <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
         <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W3跟教达标(≥2)</text>
     </svg>
 </div><div class="gauge-container">
     <svg viewBox="0 0 180 180" width="180" height="180">
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8ecf1" stroke-width="14.4" stroke-linecap="round"/>
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
         
-        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#e74c3c">0</text>
+        <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">0</text>
         <text x="90" y="118" text-anchor="middle" font-size="11" fill="#888">/ 11 次</text>
         <text x="90" y="172" text-anchor="middle" font-size="12" fill="#555" font-weight="500">W4跟教达标(≥3)</text>
     </svg>
@@ -850,19 +1141,19 @@ tr:hover td { background: #f8f9ff; }
         <h4>📊 达标率进度条</h4>
         <div class="progress-item">
     <div class="progress-label"><span>W1跟教达标率</span><span>0/11人 (0%)</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#e74c3c"></div></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#dc2626"></div></div>
 </div><div class="progress-item">
     <div class="progress-label"><span>W1话术对练达标率</span><span>1/11人 (9%)</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:9%; background:#e74c3c"></div></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:9%; background:#dc2626"></div></div>
 </div><div class="progress-item">
     <div class="progress-label"><span>W2</span><span>0/11人 (0%)</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#e74c3c"></div></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#dc2626"></div></div>
 </div><div class="progress-item">
     <div class="progress-label"><span>W3</span><span>0/11人 (0%)</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#e74c3c"></div></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#dc2626"></div></div>
 </div><div class="progress-item">
     <div class="progress-label"><span>W4</span><span>0/11人 (0%)</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#e74c3c"></div></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#dc2626"></div></div>
 </div>
     </div>
 
@@ -961,7 +1252,7 @@ function downloadCSV() {
     const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 22:22.csv';
+    link.download = '新人带教汇总_2026-06-05 22:52.csv';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -970,7 +1261,7 @@ function downloadCSV() {
 
 // 导出Excel功能（HTML表格伪装，Excel/WPS均可打开）
 function downloadExcel() {
-    const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><style>table{border-collapse:collapse;font-family:微软雅黑;font-size:12px;}th{background:#667eea;color:white;padding:8px;text-align:center;}td{padding:6px;border:1px solid #ddd;text-align:center;}tr:nth-child(even){background:#f8f9ff;}</style></head><body><table><tr><th>序号</th><th>带教师傅</th><th>新员工姓名</th><th>所属部门</th><th>最早记录日期</th><th>W1跟教</th><th>W1对练</th><th>W1 F03</th><th>W2跟教</th><th>W2对练</th><th>W2 F03</th><th>W3跟教</th><th>W3对练</th><th>W3 F03</th><th>W4跟教</th><th>W4对练</th><th>W4 F03</th></tr><tr><td>1</td><td>钟丽</td><td>武林涛</td><td>传发太原混合S2B</td><td>2026/05/29</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+    const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><style>table{border-collapse:collapse;font-family:微软雅黑;font-size:12px;}th{background:#E85A2A;color:white;padding:8px;text-align:center;}td{padding:6px;border:1px solid #ddd;text-align:center;}tr:nth-child(even){background:#f8f9ff;}</style></head><body><table><tr><th>序号</th><th>带教师傅</th><th>新员工姓名</th><th>所属部门</th><th>最早记录日期</th><th>W1跟教</th><th>W1对练</th><th>W1 F03</th><th>W2跟教</th><th>W2对练</th><th>W2 F03</th><th>W3跟教</th><th>W3对练</th><th>W3 F03</th><th>W4跟教</th><th>W4对练</th><th>W4 F03</th></tr><tr><td>1</td><td>钟丽</td><td>武林涛</td><td>传发太原混合S2B</td><td>2026/05/29</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
 <tr><td>2</td><td>秦文文</td><td>杨雯心</td><td>电销三组</td><td>2026/05/29</td><td>3</td><td>6</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
 <tr><td>3</td><td>薛秉权</td><td>王明亮</td><td>传发太原单户S2B</td><td>2026/05/30</td><td>2</td><td>1</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
 <tr><td>4</td><td>林伟民</td><td>宁家磊</td><td>小赢一手2A</td><td>2026/06/01</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
@@ -985,7 +1276,7 @@ function downloadExcel() {
     const blob = new Blob(['﻿' + html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-05 22:22.xls';
+    link.download = '新人带教汇总_2026-06-05 22:52.xls';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
