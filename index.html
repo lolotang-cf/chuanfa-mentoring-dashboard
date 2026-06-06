@@ -417,16 +417,16 @@ tr:hover td { background: var(--bg-hover); }
         </div>
     </div>
     <div class="header-meta">
-        当前数据时间: 2026-06-07 00:28<br>
-        快照基线: 2026-06-07 00:28<br>
+        当前数据时间: 2026-06-07 02:35<br>
+        快照基线: 2026-06-07 02:35<br>
         访问地址: <span style="opacity:0.8;font-size:11px;">lolotang-cf.github.io/chuanfa-mentoring-dashboard/</span>
     </div>
     <div class="header-right">
         <div class="update-log-panel">
         <div class="update-log-title">📋 更新日志</div>
         <div class="update-log-item" style="border-left:3px solid #4cd137;background:#f0fdf4;">
-            <div class="update-log-time">🆕 数据更新 · 2026-06-07 00:28</div>
-            <div class="update-log-summary">数据已同步，无新增变化</div>
+            <div class="update-log-time">🆕 数据更新 · 2026-06-07 02:35</div>
+            <div class="update-log-summary">师徒变更: 6人 | 新增记录: 14条</div>
         </div>
         <div class="update-log-item" style="border-left:3px solid #E85A2A;background:#fdf6f2;">
             <div class="update-log-time">📦 版本更新 · V6.7 (2026-06-05)</div>
@@ -435,6 +435,9 @@ tr:hover td { background: var(--bg-hover); }
         <details class="log-details">
             <summary>📋 历史数据更新（共19次）</summary>
             <div class="update-log-list" style="max-height:200px;overflow-y:auto;"><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
+                <div class="update-log-time">2026-06-07 00:28</div>
+                <div class="update-log-summary">数据已同步，无新增变化</div>
+            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
                 <div class="update-log-time">2026-06-06 00:05</div>
                 <div class="update-log-summary">数据已同步，无新增变化</div>
             </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
@@ -488,9 +491,6 @@ tr:hover td { background: var(--bg-hover); }
             </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
                 <div class="update-log-time">2026-06-05 22:22</div>
                 <div class="update-log-summary">数据已同步，无新增变化</div>
-            </div><div class="update-log-item" style="border-left:3px solid #e8ecf1;">
-                <div class="update-log-time">2026-06-05 22:08</div>
-                <div class="update-log-summary">数据已同步，无新增变化</div>
             </div></div>
         </details>
         <details class="log-details">
@@ -520,15 +520,21 @@ tr:hover td { background: var(--bg-hover); }
 </div>
 
 <!-- 更新提示 -->
-<div class="update-banner info">本次更新无新增数据变化</div>
+<div class="update-banner">
+        🔔 本次更新发现 <strong>20</strong> 项变化: 
+        新增员工 <strong>0</strong>人 · 
+        师徒变更 <strong>6</strong>对 · 
+        新增记录 <strong>14</strong>条
+        (已用 <span class="highlight-demo">亮色背景</span> 标注)
+    </div>
 
 <!-- KPI卡片 -->
 <div class="kpi-bar">
-    <div class="kpi-card primary"><div class="label">源文档覆盖人数</div><div class="value">11</div></div>
-    <div class="kpi-card success"><div class="label">有带教数据人数</div><div class="value">10</div></div>
-    <div class="kpi-card"><div class="label">跟教总次数</div><div class="value" style="color:#E85A2A">16</div></div>
+    <div class="kpi-card primary"><div class="label">源文档覆盖人数</div><div class="value">6</div></div>
+    <div class="kpi-card success"><div class="label">有带教数据人数</div><div class="value">6</div></div>
+    <div class="kpi-card"><div class="label">跟教总次数</div><div class="value" style="color:#E85A2A">6</div></div>
     <div class="kpi-card"><div class="label">话术对练总次数</div><div class="value" style="color:#c0392b">8</div></div>
-    <div class="kpi-card warning"><div class="label">话术评分卡</div><div class="value">1</div></div>
+    <div class="kpi-card warning"><div class="label">话术评分卡</div><div class="value">0</div></div>
     <div class="kpi-card danger"><div class="label">录音拆解</div><div class="value">0</div></div>
 </div>
 
@@ -545,11 +551,11 @@ tr:hover td { background: var(--bg-hover); }
 <div id="tab1" class="tab-panel active">
     <div class="filter-bar">
         <label>师傅筛选:</label>
-        <select id="filter1-teacher" onchange="applyFilter1()"><option value="">全部</option><option value="伍影舟">伍影舟</option><option value="曹泽州">曹泽州</option><option value="曹艳斌">曹艳斌</option><option value="林伟民">林伟民</option><option value="武浩东">武浩东</option><option value="汤志华">汤志华</option><option value="王义杰">王义杰</option><option value="秦文文">秦文文</option><option value="薛秉权">薛秉权</option><option value="谭炯">谭炯</option><option value="钟丽">钟丽</option></select>
+        <select id="filter1-teacher" onchange="applyFilter1()"><option value="">全部</option><option value="张导师">张导师</option><option value="李导师">李导师</option></select>
         <label>姓名筛选:</label>
-        <select id="filter1-name" onchange="applyFilter1()"><option value="">全部</option><option value="冯冰涛">冯冰涛</option><option value="卢瑜">卢瑜</option><option value="宁家磊">宁家磊</option><option value="房航宇">房航宇</option><option value="杨雯心">杨雯心</option><option value="武林涛">武林涛</option><option value="汤小华">汤小华</option><option value="王明亮">王明亮</option><option value="程锦华">程锦华</option><option value="米叶卉">米叶卉</option><option value="陈朝刚">陈朝刚</option></select>
+        <select id="filter1-name" onchange="applyFilter1()"><option value="">全部</option><option value="冯冰涛">冯冰涛</option><option value="卢瑜">卢瑜</option><option value="杨雯心">杨雯心</option><option value="武林涛">武林涛</option><option value="王明亮">王明亮</option><option value="陈朝刚">陈朝刚</option></select>
         <label>部门筛选:</label>
-        <select id="filter1-dept" onchange="applyFilter1()"><option value="">全部</option><option value="人才发展">人才发展</option><option value="传发太原单户S2B">传发太原单户S2B</option><option value="传发太原混合S1A">传发太原混合S1A</option><option value="传发太原混合S2B">传发太原混合S2B</option><option value="传发太原防诉M1A">传发太原防诉M1A</option><option value="小赢一手2A">小赢一手2A</option><option value="小赢一手2B">小赢一手2B</option><option value="小赢一手2C">小赢一手2C</option><option value="电销三组">电销三组</option></select>
+        <select id="filter1-dept" onchange="applyFilter1()"><option value="">全部</option><option value="客服部">客服部</option><option value="销售部">销售部</option></select>
         <button class="filter-reset" onclick="resetFilter1()">✕ 重置</button>
     </div>
     <div class="table-wrap">
@@ -574,12 +580,12 @@ tr:hover td { background: var(--bg-hover); }
                 </tr>
             </thead>
             <tbody>
-                <tr class="" data-teacher="钟丽" data-name="武林涛" data-dept="传发太原混合S2B">
+                <tr class="" data-teacher="张导师" data-name="武林涛" data-dept="销售部">
     <td>1</td>
-    <td>钟丽</td>
+    <td>张导师 <span class="new-tag">●新</span></td>
     <td><strong>武林涛</strong></td>
-    <td>传发太原混合S2B</td>
-    <td>2026/05/29</td>
+    <td>销售部</td>
+    <td>2026/05/27</td>
     <td>1</td>
     <td>-</td>
     <td>✓</td>
@@ -593,14 +599,33 @@ tr:hover td { background: var(--bg-hover); }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="" data-teacher="秦文文" data-name="杨雯心" data-dept="电销三组">
+<tr class="" data-teacher="李导师" data-name="杨雯心" data-dept="客服部">
     <td>2</td>
-    <td>秦文文</td>
+    <td>李导师 <span class="new-tag">●新</span></td>
     <td><strong>杨雯心</strong></td>
-    <td>电销三组</td>
+    <td>客服部</td>
+    <td>2026/05/29</td>
+    <td>-</td>
+    <td>6</td>
+    <td>✗</td>
+    <td>-</td>
+    <td>-</td>
+    <td>✗</td>
+    <td>-</td>
+    <td>-</td>
+    <td>✗</td>
+    <td>-</td>
+    <td>-</td>
+    <td>✗</td>
+</tr>
+<tr class="" data-teacher="李导师" data-name="王明亮" data-dept="客服部">
+    <td>3</td>
+    <td>李导师 <span class="new-tag">●新</span></td>
+    <td><strong>王明亮</strong></td>
+    <td>客服部</td>
     <td>2026/05/29</td>
     <td>3</td>
-    <td>6</td>
+    <td>-</td>
     <td>✓</td>
     <td>-</td>
     <td>-</td>
@@ -612,70 +637,13 @@ tr:hover td { background: var(--bg-hover); }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="" data-teacher="薛秉权" data-name="王明亮" data-dept="传发太原单户S2B">
-    <td>3</td>
-    <td>薛秉权</td>
-    <td><strong>王明亮</strong></td>
-    <td>传发太原单户S2B</td>
-    <td>2026/05/30</td>
-    <td>2</td>
-    <td>1</td>
-    <td>✓</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-</tr>
-<tr class="" data-teacher="林伟民" data-name="宁家磊" data-dept="小赢一手2A">
+<tr class="" data-teacher="张导师" data-name="冯冰涛" data-dept="销售部">
     <td>4</td>
-    <td>林伟民</td>
-    <td><strong>宁家磊</strong></td>
-    <td>小赢一手2A</td>
-    <td>2026/06/01</td>
-    <td>1</td>
-    <td>-</td>
-    <td>✓</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-</tr>
-<tr class="" data-teacher="王义杰" data-name="米叶卉" data-dept="传发太原防诉M1A">
-    <td>5</td>
-    <td>王义杰</td>
-    <td><strong>米叶卉</strong></td>
-    <td>传发太原防诉M1A</td>
-    <td>2026/06/03</td>
-    <td>2</td>
-    <td>-</td>
-    <td>✓</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-</tr>
-<tr class="" data-teacher="曹泽州" data-name="冯冰涛" data-dept="传发太原单户S2B">
-    <td>6</td>
-    <td>曹泽州</td>
+    <td>张导师 <span class="new-tag">●新</span></td>
     <td><strong>冯冰涛</strong></td>
-    <td>传发太原单户S2B</td>
+    <td>销售部</td>
     <td>2026/06/03</td>
-    <td>3</td>
+    <td>1</td>
     <td>-</td>
     <td>✓</td>
     <td>-</td>
@@ -688,34 +656,15 @@ tr:hover td { background: var(--bg-hover); }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="" data-teacher="谭炯" data-name="陈朝刚" data-dept="小赢一手2C">
-    <td>7</td>
-    <td>谭炯</td>
+<tr class="" data-teacher="李导师" data-name="陈朝刚" data-dept="客服部">
+    <td>5</td>
+    <td>李导师 <span class="new-tag">●新</span></td>
     <td><strong>陈朝刚</strong></td>
-    <td>小赢一手2C</td>
-    <td>2026/06/04</td>
-    <td>1</td>
-    <td>1</td>
-    <td>✓</td>
+    <td>客服部</td>
+    <td>2026/06/03</td>
     <td>-</td>
-    <td>-</td>
+    <td>2</td>
     <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-</tr>
-<tr class="" data-teacher="汤志华" data-name="汤小华" data-dept="人才发展">
-    <td>8</td>
-    <td>汤志华</td>
-    <td><strong>汤小华</strong></td>
-    <td>人才发展</td>
-    <td>2026/06/04</td>
-    <td>1</td>
-    <td>-</td>
-    <td>✓</td>
     <td>-</td>
     <td>-</td>
     <td>✗</td>
@@ -726,53 +675,15 @@ tr:hover td { background: var(--bg-hover); }
     <td>-</td>
     <td>✗</td>
 </tr>
-<tr class="" data-teacher="伍影舟" data-name="卢瑜" data-dept="小赢一手2B">
-    <td>9</td>
-    <td>伍影舟</td>
+<tr class="" data-teacher="李导师" data-name="卢瑜" data-dept="客服部">
+    <td>6</td>
+    <td>李导师 <span class="new-tag">●新</span></td>
     <td><strong>卢瑜</strong></td>
-    <td>小赢一手2B</td>
+    <td>客服部</td>
     <td>2026/06/05</td>
     <td>1</td>
     <td>-</td>
     <td>✓</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-</tr>
-<tr class="" data-teacher="武浩东" data-name="程锦华" data-dept="传发太原混合S1A">
-    <td>10</td>
-    <td>武浩东</td>
-    <td><strong>程锦华</strong></td>
-    <td>传发太原混合S1A</td>
-    <td>2026/06/05</td>
-    <td>1</td>
-    <td>-</td>
-    <td>✓</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
-</tr>
-<tr class="" data-teacher="曹艳斌" data-name="房航宇" data-dept="人才发展">
-    <td>11</td>
-    <td>曹艳斌</td>
-    <td><strong>房航宇</strong></td>
-    <td>人才发展</td>
-    <td>无记录</td>
-    <td>-</td>
-    <td>-</td>
-    <td>✗</td>
     <td>-</td>
     <td>-</td>
     <td>✗</td>
@@ -793,9 +704,9 @@ tr:hover td { background: var(--bg-hover); }
 <div id="tab2" class="tab-panel">
     <div class="filter-bar">
         <label>师傅筛选:</label>
-        <select id="filter2-teacher" onchange="applyFilter2()"><option value="">全部</option><option value="伍影舟">伍影舟</option><option value="曹泽州">曹泽州</option><option value="曹艳斌">曹艳斌</option><option value="林伟民">林伟民</option><option value="武浩东">武浩东</option><option value="汤志华">汤志华</option><option value="王义杰">王义杰</option><option value="秦文文">秦文文</option><option value="薛秉权">薛秉权</option><option value="谭炯">谭炯</option><option value="钟丽">钟丽</option></select>
+        <select id="filter2-teacher" onchange="applyFilter2()"><option value="">全部</option><option value="张导师">张导师</option><option value="李导师">李导师</option></select>
         <label>部门筛选:</label>
-        <select id="filter2-dept" onchange="applyFilter2()"><option value="">全部</option><option value="人才发展">人才发展</option><option value="传发太原单户S2B">传发太原单户S2B</option><option value="传发太原混合S1A">传发太原混合S1A</option><option value="传发太原混合S2B">传发太原混合S2B</option><option value="传发太原防诉M1A">传发太原防诉M1A</option><option value="小赢一手2A">小赢一手2A</option><option value="小赢一手2B">小赢一手2B</option><option value="小赢一手2C">小赢一手2C</option><option value="电销三组">电销三组</option></select>
+        <select id="filter2-dept" onchange="applyFilter2()"><option value="">全部</option><option value="客服部">客服部</option><option value="销售部">销售部</option></select>
         <button class="filter-reset" onclick="resetFilter2()">✕ 重置</button>
     </div>
     <div class="table-wrap">
@@ -817,10 +728,10 @@ tr:hover td { background: var(--bg-hover); }
                 </tr>
             </thead>
             <tbody>
-                <tr class="" data-teacher="钟丽" data-dept="传发太原混合S2B">
+                <tr class="" data-teacher="张导师" data-dept="销售部">
     <td><strong>武林涛</strong></td>
-    <td>钟丽</td>
-    <td>传发太原混合S2B</td>
+    <td>张导师</td>
+    <td>销售部</td>
     <td>1</td>
     <td class="badge-bad">✗</td>
     <td>0</td>
@@ -842,15 +753,15 @@ tr:hover td { background: var(--bg-hover); }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="" data-teacher="秦文文" data-dept="电销三组">
+<tr class="" data-teacher="李导师" data-dept="客服部">
     <td><strong>杨雯心</strong></td>
-    <td>秦文文</td>
-    <td>电销三组</td>
-    <td>3</td>
+    <td>李导师</td>
+    <td>客服部</td>
+    <td>0</td>
     <td class="badge-bad">✗</td>
     <td>6</td>
     <td class="badge-good">✓</td>
-    <td>✓已提交</td>
+    <td>✗未提交</td>
     <td>0</td>
     <td class="badge-bad">✗</td>
     <td>0</td>
@@ -867,85 +778,10 @@ tr:hover td { background: var(--bg-hover); }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="" data-teacher="薛秉权" data-dept="传发太原单户S2B">
+<tr class="" data-teacher="李导师" data-dept="客服部">
     <td><strong>王明亮</strong></td>
-    <td>薛秉权</td>
-    <td>传发太原单户S2B</td>
-    <td>2</td>
-    <td class="badge-bad">✗</td>
-    <td>1</td>
-    <td class="badge-bad">✗</td>
-    <td>✓已提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-</tr>
-<tr class="" data-teacher="林伟民" data-dept="小赢一手2A">
-    <td><strong>宁家磊</strong></td>
-    <td>林伟民</td>
-    <td>小赢一手2A</td>
-    <td>1</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✓已提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-</tr>
-<tr class="" data-teacher="王义杰" data-dept="传发太原防诉M1A">
-    <td><strong>米叶卉</strong></td>
-    <td>王义杰</td>
-    <td>传发太原防诉M1A</td>
-    <td>2</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✓已提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-</tr>
-<tr class="" data-teacher="曹泽州" data-dept="传发太原单户S2B">
-    <td><strong>冯冰涛</strong></td>
-    <td>曹泽州</td>
-    <td>传发太原单户S2B</td>
+    <td>李导师</td>
+    <td>客服部</td>
     <td>3</td>
     <td class="badge-bad">✗</td>
     <td>0</td>
@@ -967,40 +803,40 @@ tr:hover td { background: var(--bg-hover); }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="" data-teacher="谭炯" data-dept="小赢一手2C">
+<tr class="" data-teacher="张导师" data-dept="销售部">
+    <td><strong>冯冰涛</strong></td>
+    <td>张导师</td>
+    <td>销售部</td>
+    <td>1</td>
+    <td class="badge-bad">✗</td>
+    <td>0</td>
+    <td class="badge-bad">✗</td>
+    <td>✓已提交</td>
+    <td>0</td>
+    <td class="badge-bad">✗</td>
+    <td>0</td>
+    <td class="badge-bad">✗</td>
+    <td>✗未提交</td>
+    <td>0</td>
+    <td class="badge-bad">✗</td>
+    <td>0</td>
+    <td class="badge-bad">✗</td>
+    <td>✗未提交</td>
+    <td>0</td>
+    <td class="badge-bad">✗</td>
+    <td>0</td>
+    <td class="badge-bad">✗</td>
+    <td>✗未提交</td>
+</tr>
+<tr class="" data-teacher="李导师" data-dept="客服部">
     <td><strong>陈朝刚</strong></td>
-    <td>谭炯</td>
-    <td>小赢一手2C</td>
-    <td>1</td>
-    <td class="badge-bad">✗</td>
-    <td>1</td>
-    <td class="badge-bad">✗</td>
-    <td>✓已提交</td>
+    <td>李导师</td>
+    <td>客服部</td>
     <td>0</td>
     <td class="badge-bad">✗</td>
-    <td>0</td>
+    <td>2</td>
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-</tr>
-<tr class="" data-teacher="汤志华" data-dept="人才发展">
-    <td><strong>汤小华</strong></td>
-    <td>汤志华</td>
-    <td>人才发展</td>
-    <td>1</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✓已提交</td>
     <td>0</td>
     <td class="badge-bad">✗</td>
     <td>0</td>
@@ -1017,65 +853,15 @@ tr:hover td { background: var(--bg-hover); }
     <td class="badge-bad">✗</td>
     <td>✗未提交</td>
 </tr>
-<tr class="" data-teacher="伍影舟" data-dept="小赢一手2B">
+<tr class="" data-teacher="李导师" data-dept="客服部">
     <td><strong>卢瑜</strong></td>
-    <td>伍影舟</td>
-    <td>小赢一手2B</td>
+    <td>李导师</td>
+    <td>客服部</td>
     <td>1</td>
     <td class="badge-bad">✗</td>
     <td>0</td>
     <td class="badge-bad">✗</td>
     <td>✓已提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-</tr>
-<tr class="" data-teacher="武浩东" data-dept="传发太原混合S1A">
-    <td><strong>程锦华</strong></td>
-    <td>武浩东</td>
-    <td>传发太原混合S1A</td>
-    <td>1</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✓已提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
-</tr>
-<tr class="" data-teacher="曹艳斌" data-dept="人才发展">
-    <td><strong>房航宇</strong></td>
-    <td>曹艳斌</td>
-    <td>人才发展</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>0</td>
-    <td class="badge-bad">✗</td>
-    <td>✗未提交</td>
     <td>0</td>
     <td class="badge-bad">✗</td>
     <td>0</td>
@@ -1106,12 +892,12 @@ tr:hover td { background: var(--bg-hover); }
 
     <!-- KPI概览 -->
     <div class="kpi-bar">
-        <div class="kpi-card primary"><div class="label">本批次新员工</div><div class="value">11人</div></div>
-        <div class="kpi-card success"><div class="label">有带教活动</div><div class="value">10人</div></div>
-        <div class="kpi-card warning"><div class="label">无带教记录</div><div class="value">1人</div></div>
-        <div class="kpi-card"><div class="label">跟教总计</div><div class="value" style="color:#E85A2A">16次</div></div>
+        <div class="kpi-card primary"><div class="label">本批次新员工</div><div class="value">6人</div></div>
+        <div class="kpi-card success"><div class="label">有带教活动</div><div class="value">6人</div></div>
+        <div class="kpi-card warning"><div class="label">无带教记录</div><div class="value">0人</div></div>
+        <div class="kpi-card"><div class="label">跟教总计</div><div class="value" style="color:#E85A2A">6次</div></div>
         <div class="kpi-card"><div class="label">对练总计</div><div class="value" style="color:#c0392b">8次</div></div>
-        <div class="kpi-card danger"><div class="label">新增变化项</div><div class="value">0</div></div>
+        <div class="kpi-card danger"><div class="label">新增变化项</div><div class="value">20</div></div>
     </div>
 
     <!-- 仪表盘图 -->
@@ -1149,12 +935,12 @@ tr:hover td { background: var(--bg-hover); }
         <!-- 背景弧 -->
         <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
         <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
-        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 112.0 41.0" 
+        <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" 
               fill="none" stroke="url(#gauge-anim-整体活跃率-grad)" stroke-width="14.4" stroke-linecap="round"
               class="g-arc-整体活跃率 g-glow-整体活跃率"
-              style="stroke-dasharray: 296.9; --arc-len: 296.9; --final-offset: 27.0;"/>
-        <text class="g-val-整体活跃率" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#0d9488">10</text>
-        <text class="g-val-整体活跃率" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+              style="stroke-dasharray: 296.9; --arc-len: 296.9; --final-offset: 0.0;"/>
+        <text class="g-val-整体活跃率" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#0d9488">6</text>
+        <text class="g-val-整体活跃率" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 6 次</text>
         <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">整体活跃率</text>
     </svg>
 </div><div class="gauge-container">
@@ -1190,7 +976,7 @@ tr:hover td { background: var(--bg-hover); }
         <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
         
         <text class="g-val-W1跟教达标6" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">0</text>
-        <text class="g-val-W1跟教达标6" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text class="g-val-W1跟教达标6" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 6 次</text>
         <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W1达标(≥6)</text>
     </svg>
 </div><div class="gauge-container">
@@ -1224,12 +1010,12 @@ tr:hover td { background: var(--bg-hover); }
         <!-- 背景弧 -->
         <path d="M 134.5 144.5 A 63.0 63.0 0 1 1 134.5 55.5" fill="none" stroke="#e8e4df" stroke-width="14.4" stroke-linecap="round"/>
         <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
-        <path d="M 134.5 144.5 A 63.0 63.0 0 0 1 112.0 159.0" 
+        <path d="M 134.5 144.5 A 63.0 63.0 0 0 1 90.0 163.0" 
               fill="none" stroke="url(#gauge-anim-W1对练达标3-grad)" stroke-width="14.4" stroke-linecap="round"
               class="g-arc-W1对练达标3 g-glow-W1对练达标3"
-              style="stroke-dasharray: 296.9; --arc-len: 296.9; --final-offset: 269.9;"/>
+              style="stroke-dasharray: 296.9; --arc-len: 296.9; --final-offset: 247.4;"/>
         <text class="g-val-W1对练达标3" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">1</text>
-        <text class="g-val-W1对练达标3" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text class="g-val-W1对练达标3" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 6 次</text>
         <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W1对练达标(≥3)</text>
     </svg>
 </div><div class="gauge-container">
@@ -1265,7 +1051,7 @@ tr:hover td { background: var(--bg-hover); }
         <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
         
         <text class="g-val-W2跟教达标2" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">0</text>
-        <text class="g-val-W2跟教达标2" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text class="g-val-W2跟教达标2" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 6 次</text>
         <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W2达标(≥2)</text>
     </svg>
 </div><div class="gauge-container">
@@ -1301,7 +1087,7 @@ tr:hover td { background: var(--bg-hover); }
         <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
         
         <text class="g-val-W3跟教达标2" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">0</text>
-        <text class="g-val-W3跟教达标2" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text class="g-val-W3跟教达标2" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 6 次</text>
         <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W3达标(≥2)</text>
     </svg>
 </div><div class="gauge-container">
@@ -1337,7 +1123,7 @@ tr:hover td { background: var(--bg-hover); }
         <!-- 实际弧（CSS @keyframes驱动，从底部向上生长） -->
         
         <text class="g-val-W4跟教达标3" x="90" y="92" text-anchor="middle" font-size="24" font-weight="700" fill="#dc2626">0</text>
-        <text class="g-val-W4跟教达标3" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 11 次</text>
+        <text class="g-val-W4跟教达标3" x="90" y="118" text-anchor="middle" font-size="12" fill="#999">/ 6 次</text>
         <text x="90" y="202" text-anchor="middle" font-size="13" fill="#555" font-weight="500">W4达标(≥3)</text>
     </svg>
 </div>
@@ -1348,19 +1134,19 @@ tr:hover td { background: var(--bg-hover); }
     <div class="progress-section">
         <h4>📊 达标率进度条</h4>
         <div class="progress-item">
-    <div class="progress-label"><span>W1跟教达标率</span><span>0/11人 (0%)</span></div>
+    <div class="progress-label"><span>W1跟教达标率</span><span>0/6人 (0%)</span></div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#dc2626"></div></div>
 </div><div class="progress-item">
-    <div class="progress-label"><span>W1话术对练达标率</span><span>1/11人 (9%)</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:9%; background:#dc2626"></div></div>
+    <div class="progress-label"><span>W1话术对练达标率</span><span>1/6人 (17%)</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:17%; background:#dc2626"></div></div>
 </div><div class="progress-item">
-    <div class="progress-label"><span>W2</span><span>0/11人 (0%)</span></div>
+    <div class="progress-label"><span>W2</span><span>0/6人 (0%)</span></div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#dc2626"></div></div>
 </div><div class="progress-item">
-    <div class="progress-label"><span>W3</span><span>0/11人 (0%)</span></div>
+    <div class="progress-label"><span>W3</span><span>0/6人 (0%)</span></div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#dc2626"></div></div>
 </div><div class="progress-item">
-    <div class="progress-label"><span>W4</span><span>0/11人 (0%)</span></div>
+    <div class="progress-label"><span>W4</span><span>0/6人 (0%)</span></div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%; background:#dc2626"></div></div>
 </div>
     </div>
@@ -1373,11 +1159,11 @@ tr:hover td { background: var(--bg-hover); }
                 <tr><th>源文档名称</th><th>类型</th><th>记录数</th><th>提取员工</th></tr>
             </thead>
             <tbody>
-                <tr><td>带教过程评估表（单次跟教）</td><td>智能表格</td><td>21条</td><td>10人</td></tr>
+                <tr><td>带教过程评估表（单次跟教）</td><td>智能表格</td><td>10条</td><td>10人</td></tr>
                 <tr><td>话术演练记录表</td><td>智能表格</td><td>4条</td><td>2人</td></tr>
                 <tr><td>录音拆解学习心得</td><td>智能表格</td><td>0条</td><td>0人</td></tr>
-                <tr><td>话术评分卡</td><td>智能表格</td><td>1条</td><td>1人</td></tr>
-                <tr class="verify-row"><td colspan="4">✅ 交叉验证: 带教16条 + 对练8条 + 评分卡1条 | 100%源文档驱动，零硬编码</td></tr>
+                <tr><td>话术评分卡</td><td>智能表格</td><td>0条</td><td>1人</td></tr>
+                <tr class="verify-row"><td colspan="4">✅ 交叉验证: 带教6条 + 对练8条 + 评分卡0条 | 100%源文档驱动，零硬编码</td></tr>
             </tbody>
         </table>
     </div>
@@ -1446,21 +1232,16 @@ document.addEventListener('click', function(e) {
 // 导出CSV功能
 function downloadCSV() {
     const csv = `序号,带教师傅,新员工姓名,所属部门,最早记录日期,W1跟教,W1对练,W1 F03,W2跟教,W2对练,W2 F03,W3跟教,W3对练,W3 F03,W4跟教,W4对练,W4 F03
-1,钟丽,武林涛,传发太原混合S2B,2026/05/29,1,0,✓,0,0,✗,0,0,✗,0,0,✗
-2,秦文文,杨雯心,电销三组,2026/05/29,3,6,✓,0,0,✗,0,0,✗,0,0,✗
-3,薛秉权,王明亮,传发太原单户S2B,2026/05/30,2,1,✓,0,0,✗,0,0,✗,0,0,✗
-4,林伟民,宁家磊,小赢一手2A,2026/06/01,1,0,✓,0,0,✗,0,0,✗,0,0,✗
-5,王义杰,米叶卉,传发太原防诉M1A,2026/06/03,2,0,✓,0,0,✗,0,0,✗,0,0,✗
-6,曹泽州,冯冰涛,传发太原单户S2B,2026/06/03,3,0,✓,0,0,✗,0,0,✗,0,0,✗
-7,谭炯,陈朝刚,小赢一手2C,2026/06/04,1,1,✓,0,0,✗,0,0,✗,0,0,✗
-8,汤志华,汤小华,人才发展,2026/06/04,1,0,✓,0,0,✗,0,0,✗,0,0,✗
-9,伍影舟,卢瑜,小赢一手2B,2026/06/05,1,0,✓,0,0,✗,0,0,✗,0,0,✗
-10,武浩东,程锦华,传发太原混合S1A,2026/06/05,1,0,✓,0,0,✗,0,0,✗,0,0,✗
-11,曹艳斌,房航宇,人才发展,无记录,0,0,✗,0,0,✗,0,0,✗,0,0,✗`;
+1,张导师,武林涛,销售部,2026/05/27,1,0,✓,0,0,✗,0,0,✗,0,0,✗
+2,李导师,杨雯心,客服部,2026/05/29,0,6,✗,0,0,✗,0,0,✗,0,0,✗
+3,李导师,王明亮,客服部,2026/05/29,3,0,✓,0,0,✗,0,0,✗,0,0,✗
+4,张导师,冯冰涛,销售部,2026/06/03,1,0,✓,0,0,✗,0,0,✗,0,0,✗
+5,李导师,陈朝刚,客服部,2026/06/03,0,2,✗,0,0,✗,0,0,✗,0,0,✗
+6,李导师,卢瑜,客服部,2026/06/05,1,0,✓,0,0,✗,0,0,✗,0,0,✗`;
     const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-07 00:28.csv';
+    link.download = '新人带教汇总_2026-06-07 02:35.csv';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1469,22 +1250,17 @@ function downloadCSV() {
 
 // 导出Excel功能（HTML表格伪装，Excel/WPS均可打开）
 function downloadExcel() {
-    const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><style>table{border-collapse:collapse;font-family:微软雅黑;font-size:12px;}th{background:#E85A2A;color:white;padding:8px;text-align:center;}td{padding:6px;border:1px solid #ddd;text-align:center;}tr:nth-child(even){background:#f8f9ff;}</style></head><body><table><tr><th>序号</th><th>带教师傅</th><th>新员工姓名</th><th>所属部门</th><th>最早记录日期</th><th>W1跟教</th><th>W1对练</th><th>W1 F03</th><th>W2跟教</th><th>W2对练</th><th>W2 F03</th><th>W3跟教</th><th>W3对练</th><th>W3 F03</th><th>W4跟教</th><th>W4对练</th><th>W4 F03</th></tr><tr><td>1</td><td>钟丽</td><td>武林涛</td><td>传发太原混合S2B</td><td>2026/05/29</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>2</td><td>秦文文</td><td>杨雯心</td><td>电销三组</td><td>2026/05/29</td><td>3</td><td>6</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>3</td><td>薛秉权</td><td>王明亮</td><td>传发太原单户S2B</td><td>2026/05/30</td><td>2</td><td>1</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>4</td><td>林伟民</td><td>宁家磊</td><td>小赢一手2A</td><td>2026/06/01</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>5</td><td>王义杰</td><td>米叶卉</td><td>传发太原防诉M1A</td><td>2026/06/03</td><td>2</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>6</td><td>曹泽州</td><td>冯冰涛</td><td>传发太原单户S2B</td><td>2026/06/03</td><td>3</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>7</td><td>谭炯</td><td>陈朝刚</td><td>小赢一手2C</td><td>2026/06/04</td><td>1</td><td>1</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>8</td><td>汤志华</td><td>汤小华</td><td>人才发展</td><td>2026/06/04</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>9</td><td>伍影舟</td><td>卢瑜</td><td>小赢一手2B</td><td>2026/06/05</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>10</td><td>武浩东</td><td>程锦华</td><td>传发太原混合S1A</td><td>2026/06/05</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
-<tr><td>11</td><td>曹艳斌</td><td>房航宇</td><td>人才发展</td><td>无记录</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+    const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><style>table{border-collapse:collapse;font-family:微软雅黑;font-size:12px;}th{background:#E85A2A;color:white;padding:8px;text-align:center;}td{padding:6px;border:1px solid #ddd;text-align:center;}tr:nth-child(even){background:#f8f9ff;}</style></head><body><table><tr><th>序号</th><th>带教师傅</th><th>新员工姓名</th><th>所属部门</th><th>最早记录日期</th><th>W1跟教</th><th>W1对练</th><th>W1 F03</th><th>W2跟教</th><th>W2对练</th><th>W2 F03</th><th>W3跟教</th><th>W3对练</th><th>W3 F03</th><th>W4跟教</th><th>W4对练</th><th>W4 F03</th></tr><tr><td>1</td><td>张导师</td><td>武林涛</td><td>销售部</td><td>2026/05/27</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>2</td><td>李导师</td><td>杨雯心</td><td>客服部</td><td>2026/05/29</td><td>0</td><td>6</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>3</td><td>李导师</td><td>王明亮</td><td>客服部</td><td>2026/05/29</td><td>3</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>4</td><td>张导师</td><td>冯冰涛</td><td>销售部</td><td>2026/06/03</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>5</td><td>李导师</td><td>陈朝刚</td><td>客服部</td><td>2026/06/03</td><td>0</td><td>2</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
+<tr><td>6</td><td>李导师</td><td>卢瑜</td><td>客服部</td><td>2026/06/05</td><td>1</td><td>0</td><td>✓</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td><td>0</td><td>0</td><td>✗</td></tr>
 </table></body></html>`;
     const blob = new Blob(['﻿' + html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = '新人带教汇总_2026-06-07 00:28.xls';
+    link.download = '新人带教汇总_2026-06-07 02:35.xls';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
